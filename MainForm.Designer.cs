@@ -35,10 +35,6 @@
             this.cmbVideoSource = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.StartButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.originalImageBox = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.processedImgBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -70,14 +66,19 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label12 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.originalImageBox = new System.Windows.Forms.PictureBox();
+            this.processedImgBox = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TLGBotOnButton = new System.Windows.Forms.Button();
+            this.TLGUsersMessages = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.AIMLOutput = new System.Windows.Forms.TextBox();
+            this.AIMLInput = new System.Windows.Forms.TextBox();
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.originalImageBox)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.processedImgBox)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tresholdTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marginTrackBar)).BeginInit();
@@ -85,6 +86,10 @@
             this.controlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccuracyCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpochesCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processedImgBox)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -108,7 +113,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(937, 388);
+            label9.Location = new System.Drawing.Point(646, 388);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(40, 13);
             label9.TabIndex = 1015;
@@ -127,7 +132,7 @@
             // 
             this.cmbVideoSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbVideoSource.FormattingEnabled = true;
-            this.cmbVideoSource.Location = new System.Drawing.Point(13, 507);
+            this.cmbVideoSource.Location = new System.Drawing.Point(15, 335);
             this.cmbVideoSource.Name = "cmbVideoSource";
             this.cmbVideoSource.Size = new System.Drawing.Size(219, 21);
             this.cmbVideoSource.TabIndex = 1;
@@ -137,7 +142,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 491);
+            this.label1.Location = new System.Drawing.Point(12, 319);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 2;
@@ -147,51 +152,13 @@
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.StartButton.Location = new System.Drawing.Point(238, 523);
+            this.StartButton.Location = new System.Drawing.Point(240, 351);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(125, 30);
             this.StartButton.TabIndex = 3;
             this.StartButton.Text = "Старт";
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.originalImageBox);
-            this.groupBox1.Location = new System.Drawing.Point(1, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(453, 452);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Камера";
-            // 
-            // originalImageBox
-            // 
-            this.originalImageBox.Location = new System.Drawing.Point(6, 12);
-            this.originalImageBox.Name = "originalImageBox";
-            this.originalImageBox.Size = new System.Drawing.Size(440, 440);
-            this.originalImageBox.TabIndex = 1;
-            this.originalImageBox.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.processedImgBox);
-            this.panel1.Location = new System.Drawing.Point(460, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(445, 445);
-            this.panel1.TabIndex = 12;
-            // 
-            // processedImgBox
-            // 
-            this.processedImgBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processedImgBox.Location = new System.Drawing.Point(0, 0);
-            this.processedImgBox.Name = "processedImgBox";
-            this.processedImgBox.Size = new System.Drawing.Size(441, 441);
-            this.processedImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.processedImgBox.TabIndex = 0;
-            this.processedImgBox.TabStop = false;
             // 
             // panel2
             // 
@@ -205,16 +172,16 @@
             this.panel2.Controls.Add(this.marginTrackBar);
             this.panel2.Controls.Add(this.borderTrackBar);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Location = new System.Drawing.Point(463, 458);
+            this.panel2.Location = new System.Drawing.Point(318, 388);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(442, 202);
+            this.panel2.Size = new System.Drawing.Size(300, 202);
             this.panel2.TabIndex = 18;
             // 
             // comboBox2
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(293, 133);
+            this.comboBox2.Location = new System.Drawing.Point(162, 169);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(99, 21);
             this.comboBox2.TabIndex = 1015;
@@ -306,7 +273,7 @@
             // ticksLabel
             // 
             this.ticksLabel.AutoSize = true;
-            this.ticksLabel.Location = new System.Drawing.Point(235, 562);
+            this.ticksLabel.Location = new System.Drawing.Point(13, 388);
             this.ticksLabel.Name = "ticksLabel";
             this.ticksLabel.Size = new System.Drawing.Size(131, 13);
             this.ticksLabel.TabIndex = 30;
@@ -317,7 +284,7 @@
             this.resolutionsBox.AllowDrop = true;
             this.resolutionsBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resolutionsBox.FormattingEnabled = true;
-            this.resolutionsBox.Location = new System.Drawing.Point(14, 532);
+            this.resolutionsBox.Location = new System.Drawing.Point(16, 360);
             this.resolutionsBox.Name = "resolutionsBox";
             this.resolutionsBox.Size = new System.Drawing.Size(218, 21);
             this.resolutionsBox.TabIndex = 34;
@@ -339,7 +306,7 @@
             this.controlBox.Controls.Add(this.recreateNetButton);
             this.controlBox.Controls.Add(this.button3);
             this.controlBox.Controls.Add(this.EpochesCounter);
-            this.controlBox.Location = new System.Drawing.Point(911, 25);
+            this.controlBox.Location = new System.Drawing.Point(620, 25);
             this.controlBox.Name = "controlBox";
             this.controlBox.Size = new System.Drawing.Size(266, 360);
             this.controlBox.TabIndex = 35;
@@ -473,7 +440,7 @@
             // ResLabel
             // 
             this.ResLabel.AutoSize = true;
-            this.ResLabel.Location = new System.Drawing.Point(917, 458);
+            this.ResLabel.Location = new System.Drawing.Point(626, 458);
             this.ResLabel.Name = "ResLabel";
             this.ResLabel.Size = new System.Drawing.Size(52, 13);
             this.ResLabel.TabIndex = 10;
@@ -482,7 +449,7 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(980, 388);
+            this.StatusLabel.Location = new System.Drawing.Point(689, 388);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(38, 13);
             this.StatusLabel.TabIndex = 1016;
@@ -491,7 +458,7 @@
             // elapsedTimeLabel
             // 
             this.elapsedTimeLabel.AutoSize = true;
-            this.elapsedTimeLabel.Location = new System.Drawing.Point(915, 439);
+            this.elapsedTimeLabel.Location = new System.Drawing.Point(624, 439);
             this.elapsedTimeLabel.Name = "elapsedTimeLabel";
             this.elapsedTimeLabel.Size = new System.Drawing.Size(43, 13);
             this.elapsedTimeLabel.TabIndex = 1014;
@@ -499,7 +466,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(918, 404);
+            this.progressBar1.Location = new System.Drawing.Point(627, 404);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(216, 22);
             this.progressBar1.Step = 1;
@@ -509,17 +476,105 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(915, 9);
+            this.label12.Location = new System.Drawing.Point(624, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(226, 13);
             this.label12.TabIndex = 1014;
             this.label12.Text = "Выберите сеть, обучите или протестируйте";
             // 
+            // originalImageBox
+            // 
+            this.originalImageBox.Location = new System.Drawing.Point(12, 7);
+            this.originalImageBox.Name = "originalImageBox";
+            this.originalImageBox.Size = new System.Drawing.Size(300, 300);
+            this.originalImageBox.TabIndex = 1;
+            this.originalImageBox.TabStop = false;
+            // 
+            // processedImgBox
+            // 
+            this.processedImgBox.Location = new System.Drawing.Point(318, 7);
+            this.processedImgBox.Name = "processedImgBox";
+            this.processedImgBox.Size = new System.Drawing.Size(300, 300);
+            this.processedImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.processedImgBox.TabIndex = 0;
+            this.processedImgBox.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.TLGBotOnButton);
+            this.groupBox3.Controls.Add(this.TLGUsersMessages);
+            this.groupBox3.Location = new System.Drawing.Point(892, 201);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(356, 309);
+            this.groupBox3.TabIndex = 1018;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Telegram";
+            // 
+            // TLGBotOnButton
+            // 
+            this.TLGBotOnButton.Location = new System.Drawing.Point(219, 19);
+            this.TLGBotOnButton.Name = "TLGBotOnButton";
+            this.TLGBotOnButton.Size = new System.Drawing.Size(122, 34);
+            this.TLGBotOnButton.TabIndex = 1;
+            this.TLGBotOnButton.Text = "BotOn";
+            this.TLGBotOnButton.UseVisualStyleBackColor = true;
+            this.TLGBotOnButton.Click += new System.EventHandler(this.TLGBotOnButton_Click);
+            // 
+            // TLGUsersMessages
+            // 
+            this.TLGUsersMessages.Location = new System.Drawing.Point(6, 66);
+            this.TLGUsersMessages.Multiline = true;
+            this.TLGUsersMessages.Name = "TLGUsersMessages";
+            this.TLGUsersMessages.Size = new System.Drawing.Size(344, 237);
+            this.TLGUsersMessages.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.AIMLOutput);
+            this.groupBox2.Controls.Add(this.AIMLInput);
+            this.groupBox2.Location = new System.Drawing.Point(892, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(356, 184);
+            this.groupBox2.TabIndex = 1017;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "AIML чат-бот";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(219, 58);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(122, 34);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Обработать";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // AIMLOutput
+            // 
+            this.AIMLOutput.Location = new System.Drawing.Point(13, 101);
+            this.AIMLOutput.Multiline = true;
+            this.AIMLOutput.Name = "AIMLOutput";
+            this.AIMLOutput.Size = new System.Drawing.Size(328, 77);
+            this.AIMLOutput.TabIndex = 1;
+            // 
+            // AIMLInput
+            // 
+            this.AIMLInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AIMLInput.Location = new System.Drawing.Point(11, 23);
+            this.AIMLInput.Name = "AIMLInput";
+            this.AIMLInput.Size = new System.Drawing.Size(330, 29);
+            this.AIMLInput.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 671);
+            this.ClientSize = new System.Drawing.Size(1258, 671);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.processedImgBox);
+            this.Controls.Add(this.originalImageBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.controlBox);
@@ -530,8 +585,6 @@
             this.Controls.Add(this.ticksLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.ResLabel);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbVideoSource);
@@ -540,10 +593,6 @@
             this.Name = "MainForm";
             this.Text = "Распознавалка значков плеера";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.originalImageBox)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.processedImgBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tresholdTrackBar)).EndInit();
@@ -553,6 +602,12 @@
             this.controlBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccuracyCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpochesCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processedImgBox)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,9 +617,6 @@
         private System.Windows.Forms.ComboBox cmbVideoSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox originalImageBox;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -573,7 +625,6 @@
         private System.Windows.Forms.Label ticksLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar tresholdTrackBar;
-        private System.Windows.Forms.PictureBox processedImgBox;
         private System.Windows.Forms.ComboBox resolutionsBox;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox controlBox;
@@ -597,6 +648,15 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.PictureBox originalImageBox;
+        private System.Windows.Forms.PictureBox processedImgBox;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button TLGBotOnButton;
+        private System.Windows.Forms.TextBox TLGUsersMessages;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox AIMLOutput;
+        private System.Windows.Forms.TextBox AIMLInput;
     }
 }
 

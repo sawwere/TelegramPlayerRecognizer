@@ -16,10 +16,22 @@ namespace MyNeuralNetwork
 {
     delegate void FormUpdateDelegate();
 
+    public delegate void FormUpdater(double progress, double error, TimeSpan time);
+
+    public delegate void UpdateTLGMessages(string msg);
+
     public partial class MainForm : Form
     {
         int classes = 7;
         string pathToDataset = @"..\..\dataset";
+
+        /// <summary>
+        /// Чат-бот AIML
+        /// </summary>
+        AIMLBotik botik = new AIMLBotik();
+
+        TLGBotik tlgBot;
+
         public BaseNetwork Net
         {
             get
@@ -85,6 +97,16 @@ namespace MyNeuralNetwork
             processedImgBox.Image = controller.GetProcessedImage();
         }
 
+        public void UpdateTLGInfo(string message)
+        {
+            if (TLGUsersMessages.InvokeRequired)
+            {
+                TLGUsersMessages.Invoke(new UpdateTLGMessages(UpdateTLGInfo), new Object[] { message });
+                return;
+            }
+            TLGUsersMessages.Text += message + Environment.NewLine;
+        }
+
         /// <summary>
         /// Обёртка для обновления формы - перерисовки картинок, изменения состояния и прочего
         /// </summary>
@@ -98,6 +120,9 @@ namespace MyNeuralNetwork
         public MainForm(Dictionary<string, Func<int[], BaseNetwork>> networksFabric)
         {
             InitializeComponent();
+            
+
+
             // Список камер получаем
             videoDevicesList = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo videoDevice in videoDevicesList)
@@ -121,7 +146,12 @@ namespace MyNeuralNetwork
                 comboBox2.Items.Add(name);
             }
             netTypeBox.Items.AddRange(this.networksFabric.Keys.Select(s => (object)s).ToArray());
+
+            
+
             netTypeBox.SelectedIndex = 0;
+
+            tlgBot = new TLGBotik(Net, new UpdateTLGMessages(UpdateTLGInfo));
             comboBox1.SelectedIndex = comboBox2.SelectedIndex = 0;
         }
 
@@ -261,6 +291,8 @@ namespace MyNeuralNetwork
                 network.TrainProgress -= UpdateLearningInfo;
             // Пересоздаём все сети с новой структурой
             networksCache = networksCache.ToDictionary(oldNet => oldNet.Key, oldNet => CreateNetwork(oldNet.Key));
+
+            tlgBot.SetNet(Net);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -277,7 +309,7 @@ namespace MyNeuralNetwork
             //  Выключаем всё ненужное
             label12.Text = "Выполняется обучение...";
             label12.ForeColor = Color.Red;
-            groupBox1.Enabled = false;
+            originalImageBox.Enabled = false;
             trainOneButton.Enabled = false;
 
             //  Создаём новую обучающую выборку
@@ -328,7 +360,7 @@ namespace MyNeuralNetwork
                 var curNet = Net;
                 double f = await Task.Run(() => curNet.TrainOnDataSet(samples, epoches, acceptable_error, parallel));
 
-                groupBox1.Enabled = true;
+                originalImageBox.Enabled = true;
                 trainOneButton.Enabled = true;
                 StatusLabel.Text = "Ошибка: " + f;
                 StatusLabel.ForeColor = Color.Green;
@@ -478,6 +510,19 @@ namespace MyNeuralNetwork
             {
                 ResLabel.Text += names[i] +": " + fig.output[i].ToString("F4") + Environment.NewLine;
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var phrase = AIMLInput.Text;
+            if (phrase.Length > 0)
+                AIMLOutput.Text += botik.Talk(phrase) + Environment.NewLine;
+        }
+
+        private void TLGBotOnButton_Click(object sender, EventArgs e)
+        {
+            tlgBot.Act();
+            TLGBotOnButton.Enabled = false;
         }
     }
 }
