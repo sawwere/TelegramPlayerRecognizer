@@ -1,31 +1,158 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
 
 <!-- ACQUAINTANCE -->
-
-<aiml>
 <category>
-	<pattern>КТО ТЫ</pattern>
+      <pattern>МЕНЯ ЗОВУТ *</pattern>
+      <template>
+		<random>
+        <li>Здравствуйте, <set name = "username"> <star/></set>. Рад вас видеть! Чем я могу Вам помочь?</li>
+		<li>Ого, <set name = "username"> <star/></set>, какое прекрасное имя! Чем я могу Вам помочь?</li>
+		<li>Добрый день, <set name = "username"> <star/></set>. Чем я могу Вам помочь?</li>
+        <li>Добро пожаловать, <set name="username"><star /></set>!</li>
+		</random>
+      </template>  
+</category>
+<category>
+      <pattern>МОЕ ИМЯ *</pattern>
+      <template>
+		<random>
+        <li>Здравствуйте, <set name = "username"> <star/></set>. Рад вас видеть! Чем я могу Вам помочь?</li>
+		<li>Ого, <set name = "username"> <star/></set>, какое прекрасное имя! Чем я могу Вам помочь?</li>
+		<li>Добрый день, <set name = "username"> <star/></set>. Чем я могу Вам помочь?</li>
+		</random>
+      </template>  
+</category>
+
+<!-- HELLO -->
+<category>
+    <pattern>Привет</pattern>
+    <template>
+        <random>
+            <li>Привет!</li>
+            <li>Привет. Рад видеть тебя.</li>
+            <li>Добрый день! Как вас зовут?</li>
+			<li>Здравствуйте. Как вас зовут?</li>
+			<li>Приветствую! Как вас зовут?</li>
+        </random>
+    </template>
+    </category>
+<category>
+	<pattern>ДОБРЫЙ ДЕНЬ</pattern>
 	<template>
-			<random>
-                <li>Я – что-то вроде робота, искусственный интеллект.</li>
-                <li>Я чат-бот, который разговаривает с людьми в Телеграме.</li>
-            </random>
+		<srai>Привет</srai>
+	</template>
+    </category>
+<category>
+	<pattern>ЗДРАВСТВУЙ</pattern>
+	<template>
+		<srai>Привет</srai>
+	</template>
+</category>
+<category>
+	<pattern>Здравствуйте</pattern>
+	<template>
+		<srai>Привет</srai>
+	</template>
+</category>
+<category>
+    <pattern>ХАЙ</pattern>
+	<template>
+		<srai>Привет</srai>
 	</template>
 </category>
 
+<!-- BYE -->
 <category>
-        <pattern>РАССКАЖИ О СЕБЕ</pattern>
+    <pattern>ПОКА</pattern>
+    <template>
+		<random>
+            <li>Пока-пока!</li>
+			<li>Всего доброго, <get name = "username"/>!</li>
+			<li>Был рад Вам помочь, <get name = "username"/>!</li>
+			<li>До свидания, <get name = "username"/>! Пишите еще!</li>
+		</random>
+    </template>  
+</category>
+   
+<category>
+    <pattern>ВСЕГО ДОБРОГО</pattern>
         <template>
-            <srai>КТО ТЫ</srai>
+            <srai>ПОКА</srai>
         </template>
     </category>
+	
+<category>
+    <pattern>ДО СВИДАНИЯ</pattern>
+    <template>
+        <srai>ПОКА</srai>
+    </template>
+</category>
 
-    <category>
-        <pattern>ТЫ КТО</pattern>
-        <template>
-            <srai>КТО ТЫ</srai>
-        </template>
-    </category>
+<category>
+    <pattern>ДО ВСТРЕЧИ</pattern>
+    <template>
+        <srai>ПОКА</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>НА СЕГОДНЯ ХВАТИТ</pattern>
+    <template>
+        <srai>ПОКА</srai>
+    </template>
+</category>
+
+<!-- WHO_AM_I -->	
+<category>
+	<pattern>КТО ТЫ</pattern>
+	<template>
+        <random>
+            <li>Я – что-то вроде робота, искусственный интеллект.</li>
+            <li>Я - чат-бот, который разговаривает с людьми.</li>
+            <li>Я – чат-бот, способный разговаривать о медиа-плеерах</li>
+            <li>Я - запертый в компьтере программист, готов ответить на ваши вопросы.</li>
+        </random>
+	</template>
+</category>
+<category>
+    <pattern>ТЫ КТО</pattern>
+    <template>
+        <srai>КТО ТЫ</srai>
+    </template>
+</category>
+<category>
+    <pattern>РАССКАЖИ О СЕБЕ</pattern>
+    <template>
+        <srai>КТО ТЫ</srai>
+    </template>
+</category>
+
+<!-- WHAT_ARE_YOU_DOING -->	
+<category>
+	<pattern>Что ты умеешь</pattern>
+	<template>
+        <random>
+            <li>Я - чат-бот, который разговаривает о медиа-плеерах.</li>
+            <li>Я – чат-бот, способный разговаривать о медиа-плеерах.</li>
+            <li>Я - запертый в компьтере программист, готов ответить на ваши вопросы.</li>
+        </random>
+	</template>
+</category>
+<category>
+    <pattern>Что ты знаешь</pattern>
+    <template>
+        <srai>Что ты умеешь</srai>
+    </template>
+</category>
+<category>
+    <pattern>РАССКАЖИ О СЕБЕ</pattern>
+    <template>
+        <srai>Что ты умеешь</srai>
+    </template>
+</category>
+
 	
 <!-- AGE -->	
 	
@@ -108,5 +235,22 @@
             <srai>У МЕНЯ ЕСТЬ ВОПРОС</srai>
         </template>
     </category>
+<!-- ABOUT_MEDIA_PLAYER -->
+<!-- сюда вставить вопросы про значки плеера -->
 
+
+
+
+
+
+<category>
+    <pattern>*</pattern>
+    <template>
+        <random>
+            <li>Не, я такого не знаю.</li>
+            <li>Меня к такому жизнь не готовила.</li>
+            <li>Я не понимаю, что здесь написано</li>
+         </random>
+    </template>
+  </category>
 </aiml>

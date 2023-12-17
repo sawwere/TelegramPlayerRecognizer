@@ -503,7 +503,7 @@
             // 
             this.groupBox3.Controls.Add(this.TLGBotOnButton);
             this.groupBox3.Controls.Add(this.TLGUsersMessages);
-            this.groupBox3.Location = new System.Drawing.Point(892, 201);
+            this.groupBox3.Location = new System.Drawing.Point(892, 258);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(356, 309);
             this.groupBox3.TabIndex = 1018;
@@ -535,7 +535,7 @@
             this.groupBox2.Controls.Add(this.AIMLInput);
             this.groupBox2.Location = new System.Drawing.Point(892, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(356, 184);
+            this.groupBox2.Size = new System.Drawing.Size(356, 240);
             this.groupBox2.TabIndex = 1017;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AIML чат-бот";
@@ -555,7 +555,8 @@
             this.AIMLOutput.Location = new System.Drawing.Point(13, 101);
             this.AIMLOutput.Multiline = true;
             this.AIMLOutput.Name = "AIMLOutput";
-            this.AIMLOutput.Size = new System.Drawing.Size(328, 77);
+            this.AIMLOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.AIMLOutput.Size = new System.Drawing.Size(328, 133);
             this.AIMLOutput.TabIndex = 1;
             // 
             // AIMLInput
