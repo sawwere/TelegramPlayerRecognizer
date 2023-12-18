@@ -27,7 +27,7 @@ namespace MyNeuralNetwork
 
         public int width = 640;
         public int height = 640;
-        
+
         /// <summary>
         /// Размер сетки для сенсоров по горизонтали
         /// </summary>
@@ -98,16 +98,16 @@ namespace MyNeuralNetwork
             //  Отпиливаем границы, но не более половины изображения
             if (side < 4 * settings.border) settings.border = side / 4;
             side -= 2 * settings.border;
-            
+
             //  Мы сейчас занимаемся тем, что красиво оформляем входной кадр, чтобы вывести его на форму
             Rectangle cropRect = new Rectangle((bitmap.Width - bitmap.Height) / 2 + settings.left + settings.border, settings.top + settings.border, side, side);
-            
+
             //  Тут создаём новый битмапчик, который будет исходным изображением
             original = new Bitmap(cropRect.Width, cropRect.Height);
 
             //  Объект для рисования создаём
             Graphics g = Graphics.FromImage(original);
-            
+
             g.DrawImage(bitmap, new Rectangle(0, 0, original.Width, original.Height), cropRect, GraphicsUnit.Pixel);
             Pen p = new Pen(Color.Red);
             p.Width = 1;
@@ -116,23 +116,12 @@ namespace MyNeuralNetwork
             AForge.Imaging.Filters.Grayscale grayFilter = new AForge.Imaging.Filters.Grayscale(0.2125, 0.7154, 0.0721);
             var uProcessed = grayFilter.Apply(AForge.Imaging.UnmanagedImage.FromManagedImage(original));
 
-            
-            //int blockWidth = original.Width / settings.blocksCount;
-            //int blockHeight = original.Height / settings.blocksCount;
-            //for (int r = 0; r < settings.blocksCount; ++r)
-            //    for (int c = 0; c < settings.blocksCount; ++c)
-            //    {
-            //        //  Тут ещё обработку сделать
-            //        g.DrawRectangle(p, new Rectangle(c * blockWidth, r * blockHeight, blockWidth, blockHeight));
-            //    }
-
-
             //  Масштабируем изображение
             AForge.Imaging.Filters.ResizeBilinear scaleFilter = new AForge.Imaging.Filters.ResizeBilinear(
                 settings.orignalDesiredSize.Width, settings.orignalDesiredSize.Height);
             original = scaleFilter.Apply(original);
             g = Graphics.FromImage(original);
-            
+
             AForge.Imaging.Filters.ResizeBilinear scaleFilter2 = new AForge.Imaging.Filters.ResizeBilinear(
                 settings.processedDesiredSize.Width, settings.processedDesiredSize.Height);
             uProcessed = scaleFilter2.Apply(uProcessed);
@@ -141,29 +130,37 @@ namespace MyNeuralNetwork
             threshldFilter.PixelBrightnessDifferenceLimit = settings.differenceLim;
             threshldFilter.ApplyInPlace(uProcessed);
 
+            AForge.Imaging.Filters.Invert InvertFilter = new AForge.Imaging.Filters.Invert();
+            InvertFilter.ApplyInPlace(uProcessed);
+            AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
 
+            bc.FilterBlobs = true;
+            bc.MinWidth = 3;
+            bc.MinHeight = 3;
+            // Упорядочиваем по размеру
+            bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
+            // Обрабатываем картинку
 
-            //if (settings.processImg)
-            //{
+            bc.ProcessImage(uProcessed);
 
-            //    string info = processSample(ref uProcessed);
-            //    Font f = new Font(FontFamily.GenericSansSerif, 20);
-            //    g.DrawString(info, f, Brushes.Black, 30, 30);
-            //}
+            Rectangle[] rects = bc.GetObjectsRectangles();
+            AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
+            var BlobCount = blobs.Length;
 
-            //  Получить значения сенсоров из обработанного изображения размера 100x100
+            if (blobs.Length > 0)
+            {
+                Console.WriteLine(BlobCount);
+                var BiggestBlob = blobs[0];
+                bc.ExtractBlobsImage(uProcessed, BiggestBlob, false);
+                uProcessed = BiggestBlob.Image;
+            }
+            else
+            {
+                return false;
+            }
 
-            //  Можно вывести информацию на изображение!
-            //Font f = new Font(FontFamily.GenericSansSerif, 10);
-            //for (int r = 0; r < 4; ++r)
-            //    for (int c = 0; c < 4; ++c)
-            //        if (currentDeskState[r * 4 + c] >= 1 && currentDeskState[r * 4 + c] <= 16)
-            //        {
-            //            int num = 1 << currentDeskState[r * 4 + c];
-            //            
-            //        }
-
-
+            InvertFilter.ApplyInPlace(uProcessed);
+            uProcessed = scaleFilter2.Apply(uProcessed);
             processed = uProcessed.ToManagedImage();
 
             return true;
@@ -191,39 +188,31 @@ namespace MyNeuralNetwork
             // Упорядочиваем по размеру
             bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
             // Обрабатываем картинку
-            
+
             bc.ProcessImage(unmanaged);
 
             Rectangle[] rects = bc.GetObjectsRectangles();
+            AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
             rez = "Насчитали " + rects.Length.ToString() + " прямоугольников!";
-            //if (rects.Length == 0)
-            //{
-            //    finalPics[r, c] = AForge.Imaging.UnmanagedImage.FromManagedImage(new Bitmap(100, 100));
-            //    return 0;
-            //}
+            var BlobCount = blobs.Length;
 
-            // К сожалению, код с использованием подсчёта blob'ов не работает, поэтому просто высчитываем максимальное покрытие
-            // для всех блобов - для нескольких цифр, к примеру, 16, можем получить две области - отдельно для 1, и отдельно для 6.
-            // Строим оболочку, включающую все блоки. Решение плохое, требуется доработка
-            int lx = unmanaged.Width;
-            int ly = unmanaged.Height;
-            int rx = 0;
-            int ry = 0;
-            for (int i = 0; i < rects.Length; ++i)
+            if (blobs.Length > 0)
             {
-                if (lx > rects[i].X) lx = rects[i].X;
-                if (ly > rects[i].Y) ly = rects[i].Y;
-                if (rx < rects[i].X + rects[i].Width) rx = rects[i].X + rects[i].Width;
-                if (ry < rects[i].Y + rects[i].Height) ry = rects[i].Y + rects[i].Height;
+                var BiggestBlob = blobs[0];
+                bc.ExtractBlobsImage(unmanaged, BiggestBlob, false);
+                unmanaged = BiggestBlob.Image;
+                AForge.Point mc = BiggestBlob.CenterOfGravity;
+                AForge.Point ic = new AForge.Point((float)BiggestBlob.Image.Width / 2, (float)BiggestBlob.Image.Height / 2);
+                //AngleRad = (ic.Y - mc.Y) / (ic.X - mc.X);
+                //Angle = (float)(Math.Atan(AngleRad) * 180 / Math.PI);
             }
-
-            // Обрезаем края, оставляя только центральные блобчики
-            AForge.Imaging.Filters.Crop cropFilter = new AForge.Imaging.Filters.Crop(new Rectangle(lx, ly, rx - lx, ry - ly));
-            unmanaged = cropFilter.Apply(unmanaged);
-
-            //  Масштабируем до 100x100
-            AForge.Imaging.Filters.ResizeBilinear scaleFilter = new AForge.Imaging.Filters.ResizeBilinear(100, 100);
-            unmanaged = scaleFilter.Apply(unmanaged);
+            else
+            {
+                // TODO make arrengaments for No blobs case
+                //Recongnised = false;
+                //Angle = 0;
+                //AngleRad = -1;
+            }
 
             return rez;
         }

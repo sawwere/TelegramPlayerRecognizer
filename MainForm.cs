@@ -95,6 +95,19 @@ namespace MyNeuralNetwork
             ticksLabel.Text = "Тики : " + sw.Elapsed.ToString();
             originalImageBox.Image = controller.GetOriginalImage();
             processedImgBox.Image = controller.GetProcessedImage();
+
+            if (Net == null) return;
+            FigureType figure = (FigureType)comboBox1.SelectedIndex;
+            var img = AForge.Imaging.UnmanagedImage.FromManagedImage(controller.GetProcessedImage());
+            Sample fig = new Sample(ImageToArray2(img), classes, figure);
+
+            var pred = Net.Predict(fig);
+            var names = Enum.GetNames(typeof(FigureType));
+            ResLabel.Text = $"Распознано : {fig.recognizedClass}" + Environment.NewLine;
+            for (int i = 0; i < classes; i++)
+            {
+                ResLabel.Text += names[i] + ": " + fig.output[i].ToString("F4") + Environment.NewLine;
+            }
         }
 
         public void UpdateTLGInfo(string message)
@@ -199,7 +212,7 @@ namespace MyNeuralNetwork
                 }
                 videoSource = null;
                 StartButton.Text = "Старт";
-                controlBox.Enabled = false;
+                //controlBox.Enabled = false;
                 cmbVideoSource.Enabled = true;
             }
         }
