@@ -16,6 +16,7 @@ namespace MyNeuralNetwork
     class TLGBotik
     {
         public Telegram.Bot.TelegramBotClient botik = null;
+        AIMLBotik aimlBot;
 
         private UpdateTLGMessages formUpdater;
 
@@ -28,6 +29,7 @@ namespace MyNeuralNetwork
             botik = new Telegram.Bot.TelegramBotClient(botKey);
             formUpdater = updater;
             perseptron = net;
+            aimlBot = new AIMLBotik();
         }
 
         public void SetNet(BaseNetwork net)
@@ -79,7 +81,7 @@ namespace MyNeuralNetwork
                 string authors = "Гаянэ Аршакян, Луспарон Тызыхян, Дамир Казеев, Роман Хыдыров, Владимир Садовский, Анастасия Аскерова, Константин Бервинов, и Борис Трикоз (но он уже спать ушел) и молчаливый Даниил Ярошенко, а год спустя ещё Иванченко Вячеслав";
                 botik.SendTextMessageAsync(message.Chat.Id, "Авторы проекта : " + authors);
             }
-            botik.SendTextMessageAsync(message.Chat.Id, "Bot reply : " + message.Text);
+            botik.SendTextMessageAsync(message.Chat.Id, aimlBot.Talk(message.Text));
             formUpdater(message.Text);
             return;
         }
