@@ -109,14 +109,82 @@
 <category>
     <pattern>кнопка стоп</pattern>
     <template>
-        <set name = "topic">стоп</set>. Стоп?
+        <set name = "topic">стоп</set> (⏹) сбрасывает восроизведение текущей композиции
     </template>
 </category>
+
+<category>
+    <pattern>* стоп</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>стоп</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* stop</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>stop</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* остановка</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>остановка</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* остановки</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
 <topic name="стоп">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку стоп
+        Отличается от кнопки паузы (⏸) тем, что после нажатия не получится снова продолжить слушать композицию на месте, где она была прервана. Только остается запустить ее сначала.
+      </template>
+    </category>
+  </topic>
+
+  <topic name="стоп">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Отличается от кнопки паузы (⏸) тем, что после нажатия не получится снова продолжить слушать композицию на месте, где она была прервана. Только остается запустить ее сначала.
+      </template>
+    </category>
+  </topic>
+
+   <topic name="стоп">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Отличается от кнопки паузы (⏸) тем, что после нажатия не получится снова продолжить слушать композицию на месте, где она была прервана. Только остается запустить ее сначала.
       </template>
     </category>
   </topic>
@@ -124,14 +192,61 @@
 <category>
     <pattern>кнопка пауза</pattern>
     <template>
-       <set name = "topic">пауза</set>. Пауза?
+       <set name = "topic">пауза</set> (⏸) останавливает воспроизведение текущей композиции.
     </template>
 </category>
+
+<category>
+    <pattern>* пауза</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>пауза</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* паузы</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* паузе</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
+
 <topic name="пауза">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку пауза
+        Думаю, кнопка паузы (⏸), применяется чаще, чем кнопка остановки (⏹)
+      </template>
+    </category>
+</topic>
+
+<topic name="пауза">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Думаю, кнопка паузы (⏸), применяется чаще, чем кнопка остановки (⏹)
+      </template>
+    </category>
+</topic>
+
+<topic name="пауза">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Думаю, кнопка паузы (⏸), применяется чаще, чем кнопка остановки (⏹)
       </template>
     </category>
 </topic>
@@ -139,46 +254,218 @@
 <category>
     <pattern>кнопка воспроизвести</pattern>
     <template>
-        <set name = "topic">воспроизвести</set>. Плей?
+        <set name = "topic">воспроизвести</set> (▶️) запускает выбранную композицию.
     </template>
 </category>
+
+<category>
+    <pattern>* воспроизвести</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* воспроизведения</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>воспроизвести</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* плэй</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>плэй</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* плей</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>плей</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>play</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* play</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
 <topic name="воспроизвести">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку воспроизвести
+        Иконка состоит из одного треугольничка!
       </template>
     </category>
   </topic>
 
+<topic name="воспроизвести">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Иконка (▶️) состоит из одного треугольничка!
+      </template>
+    </category>
+  </topic>
+
+<topic name="воспроизвести">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Иконка (▶️) состоит из одного треугольничка!
+      </template>
+    </category>
+  </topic>
 <!-- вопросы про Перейти к следующему треку -->	
 <category>
     <pattern>кнопка следующий</pattern>
     <template>
-       <set name = "topic">следующий</set>. Некст?
+       <set name = "topic">Перейти к следующему треку</set> (⏭) включает слеующую композицию, идущую после текущей в плейлисте. 
     </template>
 </category>
-<topic name="следующий">
+
+<category>
+    <pattern>* следующему *</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* следующей *</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* следующий *</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* следующую *</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
+    </template>
+</category>
+
+<topic name="Перейти к следующему треку">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку следующий
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных вправо. За вторым треугольничком проходит вертикальная полоса.
       </template>
     </category>
 </topic>
-
-<!-- вопросы про Перейти к следующему треку -->	
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных вправо. За вторым треугольничком проходит вертикальная полоса.
+      </template>
+    </category>
+</topic>
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных вправо. За вторым треугольничком проходит вертикальная полоса.
+      </template>
+    </category>
+</topic>
+<!-- вопросы про Перейти к предыдущему треку -->	
 <category>
     <pattern>кнопка предыдущий</pattern>
     <template>
-       <set name = "topic">предыдущий</set>. Прев?
+       <set name = "topic">Перейти к предыдущему треку</set> (⏮) включает предыдущую композицию, идущую перед текущей в плейлисте. 
     </template>
 </category>
-<topic name="предыдущий">
+
+
+<category>
+    <pattern>* предыдущему *</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* предыдущей *</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* предыдущий *</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* предыдущую *</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
+
+
+<topic name="Перейти к предыдущему треку">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку предыдущий
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных влево. Перед двумя треугольничками в самом начале вертикальная полоса.
+      </template>
+    </category>
+</topic>
+<topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных влево. Перед двумя треугольничками в самом начале вертикальная полоса.
+      </template>
+    </category>
+</topic>
+<topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Рисунок данной кнопки включает в себя 2 треульничка, направленных влево. Перед двумя треугольничками в самом начале вертикальная полоса.
       </template>
     </category>
 </topic>
@@ -187,35 +474,80 @@
 <category>
     <pattern>кнопка перемотка вперед</pattern>
     <template>
-       <set name = "topic">перемотка_вперед</set>. Вперед?
+       <set name = "topic">перемотка вперед</set> (⏩) ускоряет воспроизведение текущей композиции в n раз.
     </template>
 </category>
-<topic name="перемотка_вперед">
+<topic name="перемотка вперед">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку перемотка_вперед
+        Данная кнопка соостоит из двух треуольничков, направленных вправо. Важно то, что нет вертикальной полосы, как у кнопки ⏭ (Перейти к следующему треку)
       </template>
     </category>
 </topic>
 
+<category>
+    <pattern>* вперед</pattern>
+    <template>
+        <srai>кнопка перемотка вперед</srai>
+    </template>
+</category>
+
+<topic name="перемотка вперед">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Данная кнопка соостоит из двух треуольничков, направленных вправо. Важно то, что нет вертикальной полосы, как у кнопки ⏭ (Перейти к следующему треку)
+      </template>
+    </category>
+</topic>
+<topic name="перемотка вперед">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Данная кнопка соостоит из двух треуольничков, направленных вправо. Важно то, что нет вертикальной полосы, как у кнопки ⏭ (Перейти к следующему треку)
+      </template>
+    </category>
+</topic>
 <!-- вопросы про перемотка назад -->	
 <category>
     <pattern>кнопка перемотка назад</pattern>
     <template>
-       <set name = "topic">перемотка_назад</set>. Назад?
+       <set name = "topic">перемотка назад</set> (⏪) замедляет воспроизведение текущей композиции в n раз.
     </template>
 </category>
-<topic name="перемотка_назад">
+
+<category>
+    <pattern>* назад</pattern>
+    <template>
+        <srai>кнопка перемотка назад</srai>
+    </template>
+</category>
+
+<topic name="перемотка назад">
     <category>
       <pattern>ЕЩЕ</pattern>
       <template>
-        еще про кнопку перемотка_назад
+        Данная кнопка соостоит из двух треуольничков, направленных влево. Важно то, что нет вертикальной полосы, как у кнопки ⏮ (Перейти к предыдущему треку)
       </template>
     </category>
 </topic>
-
-
+<topic name="перемотка назад">
+    <category>
+      <pattern>* ЕЩЕ</pattern>
+      <template>
+        Данная кнопка соостоит из двух треуольничков, направленных влево. Важно то, что нет вертикальной полосы, как у кнопки ⏮ (Перейти к предыдущему треку)
+      </template>
+    </category>
+</topic>
+<topic name="перемотка назад">
+    <category>
+      <pattern>* ЕЩЕ *</pattern>
+      <template>
+        Данная кнопка соостоит из двух треуольничков, направленных влево. Важно то, что нет вертикальной полосы, как у кнопки ⏮ (Перейти к предыдущему треку)
+      </template>
+    </category>
+</topic>
 <!-- WHO_AM_I -->	
 <category>
 	<pattern>КТО ТЫ</pattern>
@@ -386,6 +718,16 @@
         </template>
 </category>
 
+<category><pattern>ПОЧЕМУ *</pattern>
+        <template>
+            <random>
+                <li>Если бы я знал...</li>
+            </random>
+        </template>
+</category>
+
+
+
 <category><pattern>КЕМ БЫЛ ПРИДУМАН ПЛЕЕР</pattern>
         <template>
             <random>
@@ -500,7 +842,14 @@
 <category><pattern>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</pattern>
         <template>
             <random>
-                <li>У плеера предусмотено 7 основных функций:<br/> ▶️ Воспроизвести<br/> ⏸ Пауза<br/> ⏹ Остановка<br/> ⏭ Перейти к следующему треку<br/> ⏮ Перейти к предыдущему треку<br/> ⏩ Быстрая перемотка вперед<br/> ⏪ Быстрая перемотка назад<br/>
+                <li>У плеера предусмотено 7 основных функций (кнопок): 
+                ▶️ Воспроизвести 
+                ⏸ Пауза 
+                ⏹ Остановка 
+                ⏭ Перейти к следующему треку 
+                ⏮ Перейти к предыдущему треку 
+                ⏩ Быстрая перемотка вперед 
+                ⏪ Быстрая перемотка назад
 </li>
             </random>
         </template>
