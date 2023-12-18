@@ -104,6 +104,118 @@
     </template>
 </category>
 
+
+<!-- вопросы про стоп -->	
+<category>
+    <pattern>кнопка стоп</pattern>
+    <template>
+        <set name = "topic">стоп</set>. Стоп?
+    </template>
+</category>
+<topic name="стоп">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку стоп
+      </template>
+    </category>
+  </topic>
+<!-- вопросы про паузу -->	
+<category>
+    <pattern>кнопка пауза</pattern>
+    <template>
+       <set name = "topic">пауза</set>. Пауза?
+    </template>
+</category>
+<topic name="пауза">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку пауза
+      </template>
+    </category>
+</topic>
+<!-- вопросы про воспроизвести -->	
+<category>
+    <pattern>кнопка воспроизвести</pattern>
+    <template>
+        <set name = "topic">воспроизвести</set>. Плей?
+    </template>
+</category>
+<topic name="воспроизвести">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку воспроизвести
+      </template>
+    </category>
+  </topic>
+
+<!-- вопросы про Перейти к следующему треку -->	
+<category>
+    <pattern>кнопка следующий</pattern>
+    <template>
+       <set name = "topic">следующий</set>. Некст?
+    </template>
+</category>
+<topic name="следующий">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку следующий
+      </template>
+    </category>
+</topic>
+
+<!-- вопросы про Перейти к следующему треку -->	
+<category>
+    <pattern>кнопка предыдущий</pattern>
+    <template>
+       <set name = "topic">предыдущий</set>. Прев?
+    </template>
+</category>
+<topic name="предыдущий">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку предыдущий
+      </template>
+    </category>
+</topic>
+
+<!-- вопросы про перемотка вперед -->	
+<category>
+    <pattern>кнопка перемотка вперед</pattern>
+    <template>
+       <set name = "topic">перемотка_вперед</set>. Вперед?
+    </template>
+</category>
+<topic name="перемотка_вперед">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку перемотка_вперед
+      </template>
+    </category>
+</topic>
+
+<!-- вопросы про перемотка назад -->	
+<category>
+    <pattern>кнопка перемотка назад</pattern>
+    <template>
+       <set name = "topic">перемотка_назад</set>. Назад?
+    </template>
+</category>
+<topic name="перемотка_назад">
+    <category>
+      <pattern>ЕЩЕ</pattern>
+      <template>
+        еще про кнопку перемотка_назад
+      </template>
+    </category>
+</topic>
+
+
 <!-- WHO_AM_I -->	
 <category>
 	<pattern>КТО ТЫ</pattern>
