@@ -75,6 +75,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.AIMLOutput = new System.Windows.Forms.TextBox();
             this.AIMLInput = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
@@ -183,7 +184,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(162, 169);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(99, 21);
+            this.comboBox2.Size = new System.Drawing.Size(125, 21);
             this.comboBox2.TabIndex = 1015;
             // 
             // checkBox1
@@ -267,8 +268,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 30);
             this.button2.TabIndex = 16;
-            this.button2.Text = "Сохранить";
+            this.button2.Text = "Тест на файле";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ticksLabel
             // 
@@ -351,7 +353,7 @@
             this.netStructureBox.Name = "netStructureBox";
             this.netStructureBox.Size = new System.Drawing.Size(120, 20);
             this.netStructureBox.TabIndex = 1010;
-            this.netStructureBox.Text = "500;1568;100;7";
+            this.netStructureBox.Text = "1000;1568;100;7";
             // 
             // label11
             // 
@@ -567,6 +569,10 @@
             this.AIMLInput.Size = new System.Drawing.Size(330, 29);
             this.AIMLInput.TabIndex = 0;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,6 +664,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox AIMLOutput;
         private System.Windows.Forms.TextBox AIMLInput;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

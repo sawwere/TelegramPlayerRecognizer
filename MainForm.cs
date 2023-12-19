@@ -22,7 +22,6 @@ namespace MyNeuralNetwork
 
     public partial class MainForm : Form
     {
-        int classes = 7;
         string pathToDataset = @"..\..\dataset";
 
         /// <summary>
@@ -96,18 +95,18 @@ namespace MyNeuralNetwork
             originalImageBox.Image = controller.GetOriginalImage();
             processedImgBox.Image = controller.GetProcessedImage();
 
-            if (Net == null) return;
-            FigureType figure = (FigureType)comboBox1.SelectedIndex;
-            var img = AForge.Imaging.UnmanagedImage.FromManagedImage(controller.GetProcessedImage());
-            Sample fig = new Sample(ImageToArray2(img), classes, figure);
+            //if (Net == null) return;
+            //FigureType figure = (FigureType)comboBox1.SelectedIndex;
+            //var img = AForge.Imaging.UnmanagedImage.FromManagedImage(controller.GetProcessedImage());
+            //Sample fig = new Sample(ImageToArray2(img), classes, figure);
 
-            var pred = Net.Predict(fig);
-            var names = Enum.GetNames(typeof(FigureType));
-            ResLabel.Text = $"Распознано : {fig.recognizedClass}" + Environment.NewLine;
-            for (int i = 0; i < classes; i++)
-            {
-                ResLabel.Text += names[i] + ": " + fig.output[i].ToString("F4") + Environment.NewLine;
-            }
+            //var pred = Net.Predict(fig);
+            //var names = Enum.GetNames(typeof(FigureType));
+            //ResLabel.Text = $"Распознано : {fig.recognizedClass}" + Environment.NewLine;
+            //for (int i = 0; i < classes; i++)
+            //{
+            //    ResLabel.Text += names[i] + ": " + fig.output[i].ToString("F4") + Environment.NewLine;
+            //}
         }
 
         public void UpdateTLGInfo(string message)
@@ -290,11 +289,11 @@ namespace MyNeuralNetwork
         {
             //  Проверяем корректность задания структуры сети
             int[] structure = CurrentNetworkStructure();
-            if (structure.Length < 2 || structure[0] != 784 ||
+            if (structure.Length < 2 || structure[0] != Settings.SIZE * 2 ||
                 structure[structure.Length - 1] != (int)FigureType.Undef)
             {
                 MessageBox.Show(
-                    $"В сети должно быть более двух слоёв, первый слой должен содержать 784 нейронов, последний - {(int)FigureType.Undef}",
+                    $"В сети должно быть более двух слоёв, первый слой должен содержать XXX нейронов, последний - {(int)FigureType.Undef}",
                     "Ошибка", MessageBoxButtons.OK);
                 return;
             }
@@ -324,54 +323,11 @@ namespace MyNeuralNetwork
             label12.ForeColor = Color.Red;
             originalImageBox.Enabled = false;
             trainOneButton.Enabled = false;
-
-            //  Создаём новую обучающую выборку
-            SamplesSet samples = new SamplesSet();
-            foreach (var directory in Directory.GetDirectories(pathToDataset))
-            {
-                int type = -1;
-                switch (directory.Split('\\').Last())
-                {
-                    case "back":
-                        type = 0;
-                        break;
-                    case "break":
-                        type = 1;
-                        break;
-                    case "forward":
-                        type = 2;
-                        break;
-                    case "next":
-                        type = 3;
-                        break;
-                    case "pause":
-                        type = 4;
-                        break;
-                    case "play":
-                        type = 5;
-                        break;
-                    case "previous":
-                        type = 6;
-                        break;
-                    default:
-                        MessageBox.Show("Нет такой папки!" + directory.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        throw new FileNotFoundException(directory.ToString());
-                }
-                var files = Directory.GetFiles(directory);
-                foreach (var file in files.Take((int)(files.Length * 0.8)))
-                {
-                    var img = AForge.Imaging.UnmanagedImage.FromManagedImage(new Bitmap(file));
-                    Sample newSample = new Sample(ImageToArray2(img), classes, (FigureType)type);
-                    samples.AddSample(newSample);
-                    //Console.WriteLine(file);
-                }
-                Console.WriteLine(directory);
-            }
             try
             {
                 //  Обучение запускаем асинхронно, чтобы не блокировать форму
                 var curNet = Net;
-                double f = await Task.Run(() => curNet.TrainOnDataSet(samples, epoches, acceptable_error, parallel));
+                double f = await Task.Run(() => curNet.TrainOnDataSet(controller.processor.CreateSamplesSet(), epoches, acceptable_error, parallel));
 
                 originalImageBox.Enabled = true;
                 trainOneButton.Enabled = true;
@@ -392,7 +348,7 @@ namespace MyNeuralNetwork
             if (Net == null) return;
             FigureType figure = (FigureType)comboBox1.SelectedIndex;
             var img = AForge.Imaging.UnmanagedImage.FromManagedImage(controller.GetProcessedImage());
-            Sample fig = new Sample(ImageToArray2(img), classes, figure);
+            Sample fig = new Sample(ImageToArray2(img), Settings.classes, figure);
             Net.Train(fig, 0.5, parallelCheckBox.Checked);
             set_result(fig);
         }
@@ -405,7 +361,7 @@ namespace MyNeuralNetwork
 
             var names = Enum.GetNames(typeof(FigureType));
             ResLabel.Text = $"Распознано : {figure.recognizedClass}" + Environment.NewLine;
-            for (int i = 0; i < classes; i++)
+            for (int i = 0; i < Settings.classes; i++)
             {
                 ResLabel.Text += names[i] + ": " + figure.output[i].ToString("F4") + Environment.NewLine;
             }
@@ -456,52 +412,8 @@ namespace MyNeuralNetwork
         private void button3_Click(object sender, EventArgs e)
         {
             Enabled = false;
-            //  Тут просто тестирование новой выборки
-            //  Создаём новую обучающую выборку
-            SamplesSet samples = new SamplesSet();
 
-            foreach (var directory in Directory.GetDirectories(pathToDataset)/*.Select(x=>x.Split('\\').Last())*/)
-            {
-                int type = -1;
-                switch (directory.Split('\\').Last())
-                {
-                    case "back":
-                        type = 0;
-                        break;
-                    case "break":
-                        type = 1;
-                        break;
-                    case "forward":
-                        type = 2;
-                        break;
-                    case "next":
-                        type = 3;
-                        break;
-                    case "pause":
-                        type = 4;
-                        break;
-                    case "play":
-                        type = 5;
-                        break;
-                    case "previous":
-                        type = 6;
-                        break;
-                    default:
-                        MessageBox.Show("Нет такой папки!" + directory.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        throw new FileNotFoundException(directory.ToString());
-                }
-                var files = Directory.GetFiles(directory);
-                foreach (var file in files.Skip((int)(files.Length * 0.8)))
-                {
-                    var img = AForge.Imaging.UnmanagedImage.FromManagedImage(new Bitmap(file));
-                    Sample newSample = new Sample(ImageToArray2(img), classes, (FigureType)type);
-                    samples.AddSample(newSample);
-                    //Console.WriteLine(file);
-                }
-                Console.WriteLine(directory);
-            }
-
-            double accuracy = samples.TestNeuralNetwork(Net);
+            double accuracy = controller.processor.CreateTestSamplesSet().TestNeuralNetwork(Net);
 
             StatusLabel.Text = $"Точность на тестовой выборке : {accuracy * 100,5:F2}%";
             StatusLabel.ForeColor = accuracy * 100 >= AccuracyCounter.Value ? Color.Green : Color.Red;
@@ -513,13 +425,14 @@ namespace MyNeuralNetwork
         {
             if (Net == null) return;
             FigureType figure = (FigureType)comboBox1.SelectedIndex;
+            
             var img = AForge.Imaging.UnmanagedImage.FromManagedImage(controller.GetProcessedImage());
-            Sample fig = new Sample(ImageToArray2(img), classes, figure);
+            Sample fig = controller.processor.CreateProcessedSample(); // new Sample(ImageToArray2(img), classes, figure);
 
             var pred = Net.Predict(fig);
             var names = Enum.GetNames(typeof(FigureType));
             ResLabel.Text = $"Распознано : {fig.recognizedClass}" + Environment.NewLine;
-            for (int i = 0; i < classes; i++)
+            for (int i = 0; i < Settings.classes; i++)
             {
                 ResLabel.Text += names[i] +": " + fig.output[i].ToString("F4") + Environment.NewLine;
             }
@@ -529,13 +442,49 @@ namespace MyNeuralNetwork
         {
             var phrase = AIMLInput.Text;
             if (phrase.Length > 0)
-                AIMLOutput.Text += botik.Talk(phrase) + Environment.NewLine;
+                AIMLOutput.Text += botik.Talk(0, "default", phrase) + Environment.NewLine;
         }
 
         private void TLGBotOnButton_Click(object sender, EventArgs e)
         {
+            tlgBot.SetNet(Net);
             tlgBot.Act();
             TLGBotOnButton.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog1.Filter = "Jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var filename = openFileDialog1.FileName;
+                        if (Net == null) return;
+                        FigureType figure = (FigureType)comboBox1.SelectedIndex;
+                        var bm = new Bitmap(Image.FromFile(filename));
+                        var img = AForge.Imaging.UnmanagedImage.FromManagedImage(bm);
+                        //controller.processor.ProcessImage(new Bitmap(Image.FromFile(filename)));
+
+                        Sample fig = controller.processor.CreateSample(bm);
+
+                        var pred = Net.Predict(fig);
+                        var names = Enum.GetNames(typeof(FigureType));
+                        ResLabel.Text = $"Распознано : {fig.recognizedClass}" + Environment.NewLine;
+                        for (int i = 0; i < Settings.classes; i++)
+                        {
+                            ResLabel.Text += names[i] + ": " + fig.output[i].ToString("F4") + Environment.NewLine;
+                        }
+                    }
+                    catch
+                    {
+                        DialogResult result = MessageBox.Show("Could not open file",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

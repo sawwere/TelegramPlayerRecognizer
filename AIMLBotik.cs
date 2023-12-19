@@ -22,7 +22,7 @@ namespace MyNeuralNetwork
             myBot.isAcceptingUserInput = true;
         }
 
-        public string Talk(string phrase)
+        public string Talk(long userId, string userName, string phrase)
         {
             Request r = new Request(phrase, myUser, myBot);
             Result res = myBot.Chat(r);

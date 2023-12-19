@@ -15,8 +15,9 @@ using Telegram.Bot.Types.Enums;
 namespace MyNeuralNetwork
 {
     class TLGBotik
-
     {
+        readonly Dictionary<long, User> users = new Dictionary<long, User>();
+
         public Telegram.Bot.TelegramBotClient botik = null;
         AIMLBotik superbot;
         private UpdateTLGMessages formUpdater;
@@ -45,6 +46,16 @@ namespace MyNeuralNetwork
         {
             //  Тут очень простое дело - банально отправляем назад сообщения
             var message = update.Message;
+            var chatId = message.Chat.Id;
+            var username = message.Chat.FirstName;
+            if (!users.ContainsKey(chatId))
+            {
+                Console.WriteLine(superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
+                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Привет"));
+                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
+                users.Add(chatId, message.From);
+                return;
+            }
             formUpdater("Тип сообщения : " + message.Type.ToString());
 
             //  Получение файла (картинки)
@@ -58,34 +69,35 @@ namespace MyNeuralNetwork
 				var img = System.Drawing.Image.FromStream(imageStream);
 
 				System.Drawing.Bitmap bm = new System.Drawing.Bitmap(img);
-				proc.ProcessImage(bm);
+                AForge.Imaging.Filters.ResizeBilinear scaleFilter = new AForge.Imaging.Filters.ResizeBilinear(500, 500);
+                var uProcessed = scaleFilter.Apply(AForge.Imaging.UnmanagedImage.FromManagedImage(bm));
+                bm = uProcessed.ToManagedImage();
+                proc.ProcessImage(bm);
 				var img1 = AForge.Imaging.UnmanagedImage.FromManagedImage(bm);
-				//Sample fig = new Sample(ImageToArray2(img1), MainForm.classes, FigureType.play);
+				Sample fig = new Sample(ImageToArray2(img1), 7, FigureType.play);
                 //Sample sample = GenerateImage.GenerateFigure(uProcessed);
                 Console.WriteLine(bm.Width.ToString() +"=======" +bm.Height.ToString());
-				//switch (perseptron.Predict(fig))
-				//{
-				//	case FigureType.play: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был play!"); break;
-    //                case FigureType.pause: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был pause!"); break;
-    //                case FigureType.Back: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был back!"); break;
-    //                case FigureType.Break: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был break!"); break;
-    //                case FigureType.forward: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был forward!"); break;
-    //                case FigureType.previous: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был prev!"); break;
-    //                case FigureType.next: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был next!"); break;
-    //                default: botik.SendTextMessageAsync(message.Chat.Id, "Я такого не знаю!"); break;
-				//}
-				botik.SendTextMessageAsync(message.Chat.Id, "i am super bot");
+                switch (perseptron.Predict(fig))
+                {
+                    case FigureType.play: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был play!"); break;
+                    case FigureType.pause: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был pause!"); break;
+                    case FigureType.Back: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был back!"); break;
+                    case FigureType.Break: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был break!"); break;
+                    case FigureType.forward: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был forward!"); break;
+                    case FigureType.previous: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был prev!"); break;
+                    case FigureType.next: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был next!"); break;
+                    default: botik.SendTextMessageAsync(message.Chat.Id, "Я такого не знаю!"); break;
+                }
+                await botik.SendTextMessageAsync(message.Chat.Id, "i am super bot");
                 formUpdater("Picture recognized!");
                 return;
             }
-
-            if (message == null || message.Type != MessageType.Text) return;
-            if (message.Text == "Authors")
+            else if (message.Type == MessageType.Text)
             {
-                string authors = "Гаянэ Аршакян, Луспарон Тызыхян, Дамир Казеев, Роман Хыдыров, Владимир Садовский, Анастасия Аскерова, Константин Бервинов, и Борис Трикоз (но он уже спать ушел) и молчаливый Даниил Ярошенко, а год спустя ещё Иванченко Вячеслав";
-                botik.SendTextMessageAsync(message.Chat.Id, "Авторы проекта : " + authors);
+                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, message.Text));
             }
-            botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(message.Text));
+            if (message == null || message.Type != MessageType.Text) return;
+            
             formUpdater(message.Text);
             return;
         }
