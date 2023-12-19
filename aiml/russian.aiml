@@ -128,20 +128,6 @@
 </category>
 
 <category>
-    <pattern>* stop</pattern>
-    <template>
-        <srai>кнопка стоп</srai>
-    </template>
-</category>
-
-<category>
-    <pattern>stop</pattern>
-    <template>
-        <srai>кнопка стоп</srai>
-    </template>
-</category>
-
-<category>
     <pattern>* остановка</pattern>
     <template>
         <srai>кнопка стоп</srai>
@@ -202,6 +188,8 @@
         <srai>кнопка пауза</srai>
     </template>
 </category>
+
+
 
 <category>
     <pattern>пауза</pattern>
@@ -307,19 +295,6 @@
     </template>
 </category>
 
-<category>
-    <pattern>play</pattern>
-    <template>
-        <srai>кнопка воспроизвести</srai>
-    </template>
-</category>
-
-<category>
-    <pattern>* play</pattern>
-    <template>
-        <srai>кнопка воспроизвести</srai>
-    </template>
-</category>
 
 <topic name="воспроизвести">
     <category>
@@ -681,6 +656,7 @@
     </category>
 <!-- ABOUT_MEDIA_PLAYER -->
 <!-- общая инфа о плеерах -->
+
 
 <category><pattern>РАССКАЖИ О ПЛЕЕРАХ</pattern>
         <template>
