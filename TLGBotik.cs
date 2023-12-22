@@ -51,8 +51,8 @@ namespace MyNeuralNetwork
             if (!users.ContainsKey(chatId))
             {
                 Console.WriteLine(superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
-                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Привет"));
                 await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
+                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Привет"));
                 users.Add(chatId, message.From);
                 return;
             }

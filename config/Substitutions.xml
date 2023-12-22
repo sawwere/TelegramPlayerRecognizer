@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
+<item name="ЕЩЁ" value="ЕЩЕ" />
+<item name="ЕЩЁ" value="ЕЩЕ" />
+  <item name="ПЕРЕМОТКИ" value="ПЕРЕМОТКА" />
+  <item name="ПЕРЕМОТКЕ" value="ПЕРЕМОТКА" />
+  <item name="ПЕРЕМОТКУ" value="ПЕРЕМОТКА" />
+  <item name="ОСТАНОВКА" value="СТОП" />
+  <item name="STOP" value="СТОП" />
+  <item name="ВОСПРОИЗВЕДЕНИЕ" value="воспроизвести" />
+  <item name="PLAY" value="воспроизвести" />
+  <item name="PAUSE" value="ПАУЗА" />
+  <item name="ПАУЗЕ" value="ПАУЗА" />
+  <item name="ПАУЗУ" value="ПАУЗА" />
+  <item name="ПАУЗЫ" value="ПАУЗА" />
+  <item name="ПАУЗЕ" value="ПАУЗА" />
   <item name="=REPLY" value="" />
   <item name="NAME=RESET" value="" />
   <item name=":-)" value=" smile " />
