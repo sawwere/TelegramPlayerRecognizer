@@ -25,16 +25,253 @@
       </template>  
 </category>
 
+
+<!-- еще о плеерах сразу после кнопок. коварный момент -->
+
+
+<topic name="стоп">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="стоп">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="стоп">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="стоп">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+
+<topic name="пауза">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="пауза">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="пауза">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="пауза">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+
+  
+<topic name="воспроизвести">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="воспроизвести">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="воспроизвести">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="воспроизвести">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+  
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к следующему треку">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="Перейти к предыдущему треку">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+
+  
+  <topic name="перемотка вперед">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка вперед">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка вперед">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка вперед">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+    
+  <topic name="перемотка назад">
+    <category>
+      <pattern>* О ПЛЕЕРЕ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка назад">
+    <category>
+      <pattern>* О ПЛЕЕРАХ</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка назад">
+    <category>
+      <pattern>* про ПЛЕЕРы</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
+<topic name="перемотка назад">
+    <category>
+      <pattern>* про ПЛЕЕР</pattern>
+      <template>
+        <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+      </template>
+    </category>
+  </topic>
 <!-- HELLO -->
+
 <category>
     <pattern>Привет</pattern>
     <template>
         <random>
-            <li>Привет!</li>
-            <li>Привет. Рад видеть тебя.</li>
-            <li>Добрый день! Как вас зовут?</li>
-			<li>Здравствуйте. Как вас зовут?</li>
-			<li>Приветствую! Как вас зовут?</li>
+            <li>Привет! Я могу рассказать некоторые инетерсные факты о плеерах, или о его функциях.</li>
+            <li>Привет. Рад видеть тебя. Могу вам рассказть немного о плеерах</li>
+            <li>Добрый день! Как насет того, чтобы пообщаться о плеерах?</li>
+			<li>Здравствуйте. Не хотите ли поговорить о плеерах?</li>
+			<li>Приветствую! Давайте поговорим о плеерах! Что вам рассказать?</li>
         </random>
     </template>
     </category>
@@ -114,6 +351,13 @@
 </category>
 
 <category>
+    <pattern>* о функции стоп</pattern>
+    <template>
+        <srai>кнопка стоп</srai>
+    </template>
+</category>
+
+<category>
     <pattern>* стоп</pattern>
     <template>
         <srai>кнопка стоп</srai>
@@ -189,7 +433,19 @@
     </template>
 </category>
 
+<category>
+    <pattern>* о функции пауза</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
 
+<category>
+    <pattern>* о функции паузы</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
 
 <category>
     <pattern>пауза</pattern>
@@ -211,7 +467,12 @@
         <srai>кнопка пауза</srai>
     </template>
 </category>
-
+<category>
+    <pattern>* паузу</pattern>
+    <template>
+        <srai>кнопка пауза</srai>
+    </template>
+</category>
 <topic name="пауза">
     <category>
       <pattern>ЕЩЕ</pattern>
@@ -247,12 +508,25 @@
 </category>
 
 <category>
+    <pattern>* о функции воспроизвести</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
+
+<category>
     <pattern>* воспроизвести</pattern>
     <template>
         <srai>кнопка воспроизвести</srai>
     </template>
 </category>
 
+<category>
+    <pattern>* о функции воспроизведения</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
 <category>
     <pattern>* воспроизведения</pattern>
     <template>
@@ -266,7 +540,12 @@
         <srai>кнопка воспроизвести</srai>
     </template>
 </category>
-
+<category>
+    <pattern>* о функции плэй</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
 <category>
     <pattern>* плэй</pattern>
     <template>
@@ -280,7 +559,12 @@
         <srai>кнопка воспроизвести</srai>
     </template>
 </category>
-
+<category>
+    <pattern>* о функции плей</pattern>
+    <template>
+        <srai>кнопка воспроизвести</srai>
+    </template>
+</category>
 <category>
     <pattern>* плей</pattern>
     <template>
@@ -327,6 +611,20 @@
     <pattern>кнопка следующий</pattern>
     <template>
        <set name = "topic">Перейти к следующему треку</set> (⏭) включает слеующую композицию, идущую после текущей в плейлисте. 
+    </template>
+</category>
+
+<category>
+    <pattern>* о функции Перейти к следующему треку*</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* о функции перехода к следующему треку*</pattern>
+    <template>
+        <srai>кнопка следующий</srai>
     </template>
 </category>
 
@@ -390,6 +688,19 @@
     </template>
 </category>
 
+<category>
+    <pattern>* о функции Перейти к предыдущему треку*</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* о функции перехода к предыдущему треку*</pattern>
+    <template>
+        <srai>кнопка предыдущий</srai>
+    </template>
+</category>
 
 <category>
     <pattern>* предыдущему *</pattern>
@@ -460,7 +771,19 @@
       </template>
     </category>
 </topic>
+<category>
+    <pattern>* о функции перемотка вперед*</pattern>
+    <template>
+        <srai>кнопка перемотка вперед</srai>
+    </template>
+</category>
 
+<category>
+    <pattern>* о функции перемотки вперед*</pattern>
+    <template>
+        <srai>кнопка перемотка вперед</srai>
+    </template>
+</category>
 <category>
     <pattern>* вперед</pattern>
     <template>
@@ -489,6 +812,20 @@
     <pattern>кнопка перемотка назад</pattern>
     <template>
        <set name = "topic">перемотка назад</set> (⏪) замедляет воспроизведение текущей композиции в n раз.
+    </template>
+</category>
+
+<category>
+    <pattern>* о функции перемотка назад*</pattern>
+    <template>
+        <srai>кнопка перемотка назад</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* о функции перемотки назад*</pattern>
+    <template>
+        <srai>кнопка перемотка назад</srai>
     </template>
 </category>
 
@@ -530,7 +867,7 @@
         <random>
             <li>Я – что-то вроде робота, искусственный интеллект.</li>
             <li>Я - чат-бот, который разговаривает с людьми.</li>
-            <li>Я – чат-бот, способный разговаривать о медиа-плеерах</li>
+            <li>Я – чат-бот, способный разговаривать о плеерах</li>
             <li>Я - запертый в компьтере программист, готов ответить на ваши вопросы.</li>
         </random>
 	</template>
@@ -553,8 +890,8 @@
 	<pattern>Что ты умеешь</pattern>
 	<template>
         <random>
-            <li>Я - чат-бот, который разговаривает о медиа-плеерах.</li>
-            <li>Я – чат-бот, способный разговаривать о медиа-плеерах.</li>
+            <li>Я - чат-бот, который разговаривает о плеерах.</li>
+            <li>Я – чат-бот, способный разговаривать о плеерах.</li>
             <li>Я - запертый в компьтере программист, готов ответить на ваши вопросы.</li>
         </random>
 	</template>
@@ -571,7 +908,12 @@
         <srai>Что ты умеешь</srai>
     </template>
 </category>
-
+<category>
+    <pattern>что ты МОЖЕШЬ</pattern>
+    <template>
+        <srai>Что ты умеешь</srai>
+    </template>
+</category>
 	
 <!-- AGE -->	
 	
@@ -660,6 +1002,7 @@
 
 <category><pattern>РАССКАЖИ О ПЛЕЕРАХ</pattern>
         <template>
+        <set name = "topic"></set>
             <random>
                 <li>Плеер - девайс, который люди используют для прослушивания музыки и просмотра видео-контента.</li>
 		<li>Компьютерная программа, предназначенная для воспроизведения файлов мультимедиа-содержимого.</li>
@@ -697,7 +1040,7 @@
 <category><pattern>ПОЧЕМУ *</pattern>
         <template>
             <random>
-                <li>Если бы я знал...</li>
+                <li>Если бы я знал... Но я знаю немного о плеерах</li>
             </random>
         </template>
 </category>
@@ -712,7 +1055,19 @@
         </template>
 </category>
 
+<category>
+        <pattern>* ПРО ПЛЕЕР</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
 
+    <category>
+        <pattern>* ПРО ПЛЕЕРЫ</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
 
 <category>
         <pattern>КТО * ПЛЕЕР</pattern>
@@ -734,7 +1089,12 @@
             <srai>КЕМ БЫЛ ПРИДУМАН ПЛЕЕР</srai>
         </template>
     </category>
-
+<category>
+        <pattern>РАССКАЖИ</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
 <category>
         <pattern>В КАКОМ ГОДУ *</pattern>
         <template>
@@ -793,6 +1153,30 @@
     </category>
 
 <category>
+        <pattern>* ФАКТ</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
+<category>
+        <pattern>* ФАКТЫ</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ФАКТ *</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
+<category>
+        <pattern>* ФАКТЫ *</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
+<category>
         <pattern>* ЕЩЁ</pattern>
         <template>
             <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
@@ -818,7 +1202,7 @@
 <category><pattern>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</pattern>
         <template>
             <random>
-                <li>У плеера предусмотено 7 основных функций (кнопок): 
+                <li>У плеера предусмотено 7 основных кнопок: 
                 ▶️ Воспроизвести 
                 ⏸ Пауза 
                 ⏹ Остановка 
@@ -826,11 +1210,34 @@
                 ⏮ Перейти к предыдущему треку 
                 ⏩ Быстрая перемотка вперед 
                 ⏪ Быстрая перемотка назад
+Я могу рассказать о каждой кнопке подробнее
 </li>
             </random>
         </template>
 </category>
 
+<category><pattern>* значках *</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+
+<category><pattern>* кнопках *</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+<category><pattern>* значках</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+
+<category><pattern>* кнопках</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
 <category><pattern>РАССКАЖИ ОБ ЭТОМ ПОДРОБНЕЕ</pattern>
         <template>
             <random>
@@ -844,13 +1251,6 @@
 		Не могу рассказть конкретно, как <star/>. Лучше попросите рассказать в общем и целом об основных функциях плеера
         </template>
 </category>
-
-<category>
-        <pattern>* ФУНКЦИЯ *</pattern>
-        <template>
-            <srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
-        </template>
-    </category>
 
 <category>
         <pattern>* ВОЗМОЖНОСТЬ *</pattern>
@@ -907,7 +1307,12 @@
             <srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
         </template>
     </category>
-
+<category>
+        <pattern>* ФУНКЦИЯХ</pattern>
+        <template>
+            <srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+    </category>
 <category>
         <pattern>* ВОЗМОЖНОСТЯХ *</pattern>
         <template>
@@ -947,9 +1352,13 @@
     <pattern>*</pattern>
     <template>
         <random>
-            <li>Не, я такого не знаю.</li>
-            <li>Меня к такому жизнь не готовила.</li>
-            <li>Я не понимаю, что здесь написано</li>
+            <li>Не, я такого не знаю. Я могу рассказать о функциях плеера, например. Или какой-нибудь факт</li>
+            <li>Меня к такому жизнь не готовила. Я могу рассказать вам интересный факт о плеере</li>
+            <li>Я не понимаю, что здесь написано. Лучше попросите меня рассказать о функциях плеера.</li>
+            <li>Простите, я еще не настолько умен. Лучше попросите меня рассказать о функциях плеера.</li>
+            <li>Простите, пока не могу. Я могу рассказать вам интересный факт о плеере</li>
+            <li>А может лучше поговорим о плеерах?</li>
+            <li>Я пока только немного могу рассказать о плеерах, например, основные функции, факты...</li>
          </random>
     </template>
   </category>
