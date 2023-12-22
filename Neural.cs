@@ -40,6 +40,7 @@ namespace MyNeuralNetwork
         public Sample(double[] inputValues, int classesCount, FigureType sampleClass = FigureType.Undef)
         {
             //  Клонируем массивчик
+            classesCount += 1;//unDef
             input = (double[])inputValues.Clone();
             output = new double[classesCount];
             if (sampleClass != FigureType.Undef) output[(int)sampleClass] = 1;

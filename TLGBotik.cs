@@ -74,7 +74,7 @@ namespace MyNeuralNetwork
                 bm = uProcessed.ToManagedImage();
                 proc.ProcessImage(bm);
 				var img1 = AForge.Imaging.UnmanagedImage.FromManagedImage(bm);
-				Sample fig = new Sample(ImageToArray2(img1), 7, FigureType.play);
+                Sample fig = proc.CreateProcessedSample();
                 //Sample sample = GenerateImage.GenerateFigure(uProcessed);
                 Console.WriteLine(bm.Width.ToString() +"=======" +bm.Height.ToString());
                 switch (perseptron.Predict(fig))

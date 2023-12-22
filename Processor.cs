@@ -10,7 +10,7 @@ namespace MyNeuralNetwork
     internal class Settings
     {
         public static int SIZE = 100;
-        public static int classes = 7;
+        public static int classes = 6;
         public string pathToDataset = @"..\..\dataset";
         private int _border = 20;
         public int border
@@ -135,36 +135,32 @@ namespace MyNeuralNetwork
             threshldFilter.PixelBrightnessDifferenceLimit = settings.differenceLim;
             threshldFilter.ApplyInPlace(uProcessed);
 
-            //AForge.Imaging.Filters.Invert InvertFilter = new AForge.Imaging.Filters.Invert();
-            //InvertFilter.ApplyInPlace(uProcessed);
-            //AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
+            AForge.Imaging.Filters.Invert InvertFilter = new AForge.Imaging.Filters.Invert();
+            InvertFilter.ApplyInPlace(uProcessed);
+            AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
+            bc.FilterBlobs = true;
+            bc.MinWidth = 3;
+            bc.MinHeight = 3;
+            // Упорядочиваем по размеру
+            bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
+            // Обрабатываем картинку
 
-            //bc.FilterBlobs = true;
-            //bc.MinWidth = 3;
-            //bc.MinHeight = 3;
-            //// Упорядочиваем по размеру
-            //bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
-            //// Обрабатываем картинку
+            bc.ProcessImage(uProcessed);
 
-            //bc.ProcessImage(uProcessed);
-
-            //Rectangle[] rects = bc.GetObjectsRectangles();
-            //AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
-            //var BlobCount = blobs.Length;
-
-            //if (blobs.Length > 0)
-            //{
-            //    var BiggestBlob = blobs[0];
-            //    bc.ExtractBlobsImage(uProcessed, BiggestBlob, false);
-            //    uProcessed = BiggestBlob.Image;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
-            //InvertFilter.ApplyInPlace(uProcessed);
-            //uProcessed = scaleFilter2.Apply(uProcessed);
+            Rectangle[] rects = bc.GetObjectsRectangles();
+            AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
+            if (blobs.Length > 0)
+            {
+                var BiggestBlob = blobs[0];
+                bc.ExtractBlobsImage(uProcessed, BiggestBlob, false);
+                uProcessed = BiggestBlob.Image;
+            }
+            else
+            {
+                return false;
+            }
+            InvertFilter.ApplyInPlace(uProcessed);
+            uProcessed = scaleFilter2.Apply(uProcessed);
             processed = uProcessed.ToManagedImage();
 
             return true;
@@ -209,31 +205,28 @@ namespace MyNeuralNetwork
 
             AForge.Imaging.Filters.Invert InvertFilter = new AForge.Imaging.Filters.Invert();
             InvertFilter.ApplyInPlace(uProcessed);
-            //AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
 
-            //bc.FilterBlobs = true;
-            ////bc.MinWidth = 3;
-            ////bc.MinHeight = 3;
-            //// Упорядочиваем по размеру
-            //bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
-            //// Обрабатываем картинку
+            AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
+            bc.FilterBlobs = true;
+            //bc.MinWidth = 3;
+            //bc.MinHeight = 3;
+            // Упорядочиваем по размеру
+            bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
+            // Обрабатываем картинку
+            bc.ProcessImage(uProcessed);
 
-            //bc.ProcessImage(uProcessed);
-
-            //Rectangle[] rects = bc.GetObjectsRectangles();
-            //AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
-            //var BlobCount = blobs.Length;
-
-            //if (blobs.Length > 0)
-            //{
-            //    var BiggestBlob = blobs[0];
-            //    bc.ExtractBlobsImage(uProcessed, BiggestBlob, false);
-            //    uProcessed = BiggestBlob.Image;
-            //}
-            //else
-            //{
-            //    return bitmap;
-            //}
+            Rectangle[] rects = bc.GetObjectsRectangles();
+            AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
+            if (blobs.Length > 0)
+            {
+                var BiggestBlob = blobs[0];
+                bc.ExtractBlobsImage(uProcessed, BiggestBlob, false);
+                uProcessed = BiggestBlob.Image;
+            }
+            else
+            {
+                return bitmap;
+            }
 
             InvertFilter.ApplyInPlace(uProcessed);
             uProcessed = scaleFilter2.Apply(uProcessed);
@@ -294,6 +287,7 @@ namespace MyNeuralNetwork
         {
             //  Создаём новую обучающую выборку
             SamplesSet samples = new SamplesSet();
+            int cnt = 0;
             foreach (var directory in Directory.GetDirectories(settings.pathToDataset))
             {
                 int type = -1;
@@ -325,12 +319,14 @@ namespace MyNeuralNetwork
                         throw new FileNotFoundException(directory.ToString());
                 }
                 var files = Directory.GetFiles(directory);
+                
                 foreach (var file in files.Take((int)(files.Length * 0.8)))
                 {
                     var img = new Bitmap(file);
-                    Sample newSample = CreateSample(img, (FigureType)type);
+                    Sample newSample = CreateSample(img, (FigureType)type, cnt);
                     samples.AddSample(newSample);
-                    Console.WriteLine($"{newSample.actualClass} {file}");
+                    Console.WriteLine($"{newSample.actualClass} {file} {cnt}");
+                    cnt++;
                 }
                 Console.WriteLine(directory);
                 
@@ -338,10 +334,12 @@ namespace MyNeuralNetwork
             return samples;
         }
 
-        public Sample CreateSample(Bitmap img, FigureType actualType = FigureType.Undef)
+        public Sample CreateSample(Bitmap img, FigureType actualType = FigureType.Undef, int cnt = 0)
         {
             var inputs = new double[Settings.SIZE * 2]; 
             var um = AForge.Imaging.UnmanagedImage.FromManagedImage(Get(img));
+            //img.Save($"F:\\my_programs\\aa_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //Get(img).Save($"F:\\my_programs\\bb_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             var cols = GetBitmapColumn(um);
             var rows = GetBitmapRow(um);
             for (int i = 0; i < Settings.SIZE; i++)
@@ -350,16 +348,19 @@ namespace MyNeuralNetwork
                 inputs[i + Settings.SIZE] = rows[i];
             }
 
-            return new Sample(inputs, 7, actualType);
+            return new Sample(inputs, Settings.classes, actualType);
         }
 
         public Sample CreateProcessedSample(FigureType actualType = FigureType.Undef)
         {
             var inputs = new double[Settings.SIZE * 2];
+            var um = AForge.Imaging.UnmanagedImage.FromManagedImage(processed);
+            var cols = GetBitmapColumn(um);
+            var rows = GetBitmapRow(um);
             for (int i = 0; i < Settings.SIZE; i++)
             {
-                inputs[i] = CountBlackPixels(GetBitmapColumn(processed, i));
-                inputs[i + Settings.SIZE] = CountBlackPixels(GetBitmapRow(processed, i));
+                inputs[i] = cols[i];
+                inputs[i + Settings.SIZE] = rows[i];
             }
 
             return new Sample(inputs, Settings.classes, actualType);

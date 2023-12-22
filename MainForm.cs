@@ -132,7 +132,7 @@ namespace MyNeuralNetwork
         public MainForm(Dictionary<string, Func<int[], BaseNetwork>> networksFabric)
         {
             InitializeComponent();
-            
+            netStructureBox.Text = $"{Settings.SIZE*2};{Settings.SIZE * 4};20;{Settings.classes}";
 
 
             // Список камер получаем
@@ -290,10 +290,10 @@ namespace MyNeuralNetwork
             //  Проверяем корректность задания структуры сети
             int[] structure = CurrentNetworkStructure();
             if (structure.Length < 2 || structure[0] != Settings.SIZE * 2 ||
-                structure[structure.Length - 1] != (int)FigureType.Undef)
+                structure[structure.Length - 1] != Settings.classes)
             {
                 MessageBox.Show(
-                    $"В сети должно быть более двух слоёв, первый слой должен содержать XXX нейронов, последний - {(int)FigureType.Undef}",
+                    $"В сети должно быть более двух слоёв, первый слой должен содержать {Settings.SIZE * 2} нейронов, последний - {Settings.classes}",
                     "Ошибка", MessageBoxButtons.OK);
                 return;
             }
