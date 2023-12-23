@@ -42,6 +42,38 @@ namespace MyNeuralNetwork
             formUpdater("Net updated!");
         }
 
+        private async Task SendSticker(long chatId, string stickerId)
+        {
+            await botik.SendStickerAsync(chatId, InputFile.FromFileId(stickerId));
+        }
+
+        private async Task AnswerText(long chatId, string username, string text)
+        {
+            string answer = superbot.Talk(chatId, username, text);
+            if (answer[0] == ';')
+            {
+                var splitted = answer.Split(';');
+                string stickerCode = splitted[1];
+                switch (stickerCode)
+                {
+                    case "HELLO1":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBm9lhyHrXGIeWu3q-YkAAXD25fki6CEAAiMUAALmOWlLsJSHzUZ3eqYzBA");
+                        break;
+                    case "HELLO2":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBnplhyY2wfi9kIAgMJBvJDNvLFC1agAC6yMAAj_lAUl35ZIodwxRkzME");
+                        break;
+                    case "HELLO3":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBnxlhyagej4AAXlkVByUc5jfopzlvUYAAn8aAAIwH9FJykfEChRDUVUzBA");
+                        break;
+                }
+                await botik.SendTextMessageAsync(chatId, splitted[2]);
+            }
+            else
+            {
+                await botik.SendTextMessageAsync(chatId, answer);
+            }
+        }
+
         private async Task HandleUpdateMessageAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             //  Тут очень простое дело - банально отправляем назад сообщения
@@ -52,7 +84,8 @@ namespace MyNeuralNetwork
             {
                 Console.WriteLine(superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
                 await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Меня зовут {message.Chat.FirstName}"));
-                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Привет"));
+                //await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, $"Привет"));
+                await AnswerText(chatId, message.Chat.FirstName, $"Привет");
                 users.Add(chatId, message.From);
                 return;
             }
@@ -76,10 +109,10 @@ namespace MyNeuralNetwork
 				var img1 = AForge.Imaging.UnmanagedImage.FromManagedImage(bm);
                 Sample fig = proc.CreateProcessedSample();
                 //Sample sample = GenerateImage.GenerateFigure(uProcessed);
-                Console.WriteLine(bm.Width.ToString() +"=======" +bm.Height.ToString());
+                //Console.WriteLine(bm.Width.ToString() +"=======" +bm.Height.ToString());
                 switch (perseptron.Predict(fig))
                 {
-                    case FigureType.play: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был play!"); break;
+                    case FigureType.play: await SendSticker(chatId, "CAACAgIAAxkBAAELBm9lhyHrXGIeWu3q-YkAAXD25fki6CEAAiMUAALmOWlLsJSHzUZ3eqYzBA"); break;
                     case FigureType.pause: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был pause!"); break;
                     case FigureType.Back: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был back!"); break;
                     case FigureType.Break: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был break!"); break;
@@ -88,13 +121,13 @@ namespace MyNeuralNetwork
                     case FigureType.next: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был next!"); break;
                     default: botik.SendTextMessageAsync(message.Chat.Id, "Я такого не знаю!"); break;
                 }
-                await botik.SendTextMessageAsync(message.Chat.Id, "i am super bot");
+                await botik.SendTextMessageAsync(message.Chat.Id, "I am super bot");
                 formUpdater("Picture recognized!");
                 return;
             }
             else if (message.Type == MessageType.Text)
             {
-                await botik.SendTextMessageAsync(message.Chat.Id, superbot.Talk(chatId, message.Chat.FirstName, message.Text));
+                await AnswerText(chatId, message.Chat.FirstName, message.Text);
             }
             if (message == null || message.Type != MessageType.Text) return;
             
