@@ -57,14 +57,54 @@ namespace MyNeuralNetwork
                 switch (stickerCode)
                 {
                     case "HELLO1":
-                        await SendSticker(chatId, "CAACAgIAAxkBAAELBm9lhyHrXGIeWu3q-YkAAXD25fki6CEAAiMUAALmOWlLsJSHzUZ3eqYzBA");
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBuxlh2zRsPAQeTrPRvRBQcu6dMSm9gACbRUAAnFhAAFL63Ud3NjrFFUzBA");
                         break;
                     case "HELLO2":
-                        await SendSticker(chatId, "CAACAgIAAxkBAAELBnplhyY2wfi9kIAgMJBvJDNvLFC1agAC6yMAAj_lAUl35ZIodwxRkzME");
+                        await SendSticker(chatId, "CAACAgQAAxkBAAELBu5lh22Nu4AiwHOPuVYsL0dzL1BRxQACURAAAq8haFElmf1PBkm8BjME");
                         break;
                     case "HELLO3":
-                        await SendSticker(chatId, "CAACAgIAAxkBAAELBnxlhyagej4AAXlkVByUc5jfopzlvUYAAn8aAAIwH9FJykfEChRDUVUzBA");
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBvRlh23sdZpADDybzW0cMzFoht6TTQAC2hkAApkbAAFLpiCWZy6_haczBA");
                         break;
+                    case "HELLO4":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBr5lh2DCZfO7ROqqhBcYPO0SdLQjTQAC4BwAAj06EUhEul5mn-zHqTME");
+                        break;
+                    case "HELLO5":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBsxlh2PM6gHaFlibYs5DhT4FyJZ_VwACPzkAAj8V-UqJSFZhpU_GGzME");
+                        break;
+                    case "SORRY01":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBthlh2T-436MqeIk-Y9Mim9HxsSJqwACJxwAAqlpeEhWnu_-myVDUjME");
+                        break;
+                    case "SORRY02":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBtZlh2T3XYyOyyajLukt8ndvsV6kiAACKB0AAvY1mUte9fJtXOvAqTME");
+                        break;
+                    case "SORRY03":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBtJlh2TjxKhtKNK2JSWH8HGomL1OqAACcSAAAg2j0UuKAvY0GQsy8DME");
+                        break;
+                    case "SORRY04":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBtRlh2TzHguhfoa9pXgm_sJS_ovU8gACDT8AAg6hWEvnrFtiRVKG4DME");
+                        break;
+                    case "SORRY05":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBuhlh2wv6Fad25pg16mjHj0WFH_g8gACYRsAAnbL-ErRklcD47HPHzME");
+                        break;
+                    case "KAK01":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBtxlh2d5IKJYfqLWJyMRAShV6fmFuQACBCQAAvzi2UmZgTU5N77N4TME");
+                        break;
+                    case "KAK02":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBt5lh2fg4jg0eob2ixxcAqM62It38QACBxwAAglUQUjzyy4hvWGnujME");
+                        break;
+                    case "BYE01":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBtplh2VK-zbZl5gYlXNtkIrQGc0LNAACVjIAAoblaEqOQ7yK_tGY8zME");
+                        break;
+                    case "BYE02":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBs5lh2TUqu7h5_TodzwbxS7KZOESIAACkxoAArqVGUjIvJix0dB9CTME");
+                        break;
+                    case "BYE03":
+                        await SendSticker(chatId, "CAACAgIAAxkBAAELBvhlh29JquH5uRb9zZjmYkmmeEyEQQACRhwAAigtSEhKZjkxQIkOCDME");
+                        break;
+                    case "BYE04":
+                        await SendSticker(chatId, "CAACAgQAAxkBAAELBvxlh2_DO5dZXGRCOFNsE0nPs__paAAChQ0AAls0aVEGmGV9TXEyjTME");
+                        break;
+
                 }
                 await botik.SendTextMessageAsync(chatId, splitted[2]);
             }
