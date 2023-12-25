@@ -49,7 +49,13 @@ namespace MyNeuralNetwork
 
         private async Task AnswerText(long chatId, string username, string text)
         {
+            Console.WriteLine(text);
             string answer = superbot.Talk(chatId, username, text);
+            if (answer.Length < 1)
+            {
+                return;
+            }
+            Console.WriteLine(answer);
             if (answer[0] == ';')
             {
                 var splitted = answer.Split(';');
@@ -146,22 +152,18 @@ namespace MyNeuralNetwork
                 var uProcessed = scaleFilter.Apply(AForge.Imaging.UnmanagedImage.FromManagedImage(bm));
                 bm = uProcessed.ToManagedImage();
                 proc.ProcessImage(bm);
-				var img1 = AForge.Imaging.UnmanagedImage.FromManagedImage(bm);
                 Sample fig = proc.CreateProcessedSample();
-                //Sample sample = GenerateImage.GenerateFigure(uProcessed);
-                //Console.WriteLine(bm.Width.ToString() +"=======" +bm.Height.ToString());
                 switch (perseptron.Predict(fig))
                 {
-                    case FigureType.play: await SendSticker(chatId, "CAACAgIAAxkBAAELBm9lhyHrXGIeWu3q-YkAAXD25fki6CEAAiMUAALmOWlLsJSHzUZ3eqYzBA"); break;
-                    case FigureType.pause: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был pause!"); break;
-                    case FigureType.Back: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был back!"); break;
-                    case FigureType.Break: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был break!"); break;
-                    case FigureType.forward: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был forward!"); break;
-                    case FigureType.previous: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был prev!"); break;
-                    case FigureType.next: botik.SendTextMessageAsync(message.Chat.Id, "Это легко, это был next!"); break;
-                    default: botik.SendTextMessageAsync(message.Chat.Id, "Я такого не знаю!"); break;
+                    case FigureType.Break: await AnswerText(chatId, username, "Загадываю Стоп"); break;
+                    case FigureType.pause: await AnswerText(chatId, username, "Загадываю пауза"); break;
+                    case FigureType.play: await AnswerText(chatId, username, "Загадываю воспроизвести"); break;
+                    case FigureType.next: await AnswerText(chatId, username, "Загадываю Перейти к следующему треку"); break;
+                    case FigureType.previous: await AnswerText(chatId, username, "Загадываю Перейти к предыдущему треку"); break;
+                    case FigureType.forward: await AnswerText(chatId, username, "Загадываю перемотка вперед"); break;
+                    case FigureType.Back: await AnswerText(chatId, username, "Загадываю перемотка назад"); break;
+                    default: await botik.SendTextMessageAsync(message.Chat.Id, "Я такого не знаю!"); break;
                 }
-                await botik.SendTextMessageAsync(message.Chat.Id, "I am super bot");
                 formUpdater("Picture recognized!");
                 return;
             }

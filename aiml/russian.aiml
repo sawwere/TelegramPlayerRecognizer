@@ -573,7 +573,12 @@
     </template>
 </category>
 
-
+<category>
+    <pattern>Загадываю Стоп</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">стоп</set> (⏹)
+    </template>
+</category>
 <!-- вопросы про стоп -->	
 <category>
     <pattern>кнопка стоп</pattern>
@@ -650,6 +655,13 @@
       </template>
     </category>
   </topic>
+
+<category>
+    <pattern>Загадываю пауза</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">пауза</set> (⏸)
+    </template>
+</category>
 <!-- вопросы про паузу -->	
 <category>
     <pattern>кнопка пауза</pattern>
@@ -731,6 +743,13 @@
       </template>
     </category>
 </topic>
+
+<category>
+    <pattern>Загадываю воспроизвести</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">воспроизвести</set> (▶️)
+    </template>
+</category>
 <!-- вопросы про воспроизвести -->	
 <category>
     <pattern>кнопка воспроизвести</pattern>
@@ -838,6 +857,13 @@
       </template>
     </category>
   </topic>
+
+<category>
+    <pattern>Загадываю Перейти к следующему треку</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">Перейти к следующему треку</set> (⏭)
+    </template>
+</category>
 <!-- вопросы про Перейти к следующему треку -->	
 <category>
     <pattern>кнопка следующий</pattern>
@@ -912,6 +938,13 @@
       </template>
     </category>
 </topic>
+
+<category>
+    <pattern>Загадываю Перейти к предыдущему треку</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">Перейти к предыдущему треку</set> (⏮)
+    </template>
+</category>
 <!-- вопросы про Перейти к предыдущему треку -->	
 <category>
     <pattern>кнопка предыдущий</pattern>
@@ -988,6 +1021,12 @@
     </category>
 </topic>
 
+<category>
+    <pattern>Загадываю перемотка вперед</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">перемотка вперед</set> (⏩)
+    </template>
+</category>
 <!-- вопросы про перемотка вперед -->	
 <category>
     <pattern>кнопка перемотка вперед</pattern>
@@ -1039,6 +1078,13 @@
       </template>
     </category>
 </topic>
+
+<category>
+    <pattern>Загадываю перемотка назад</pattern>
+    <template>
+        Думаю, что это кнопка <set name = "topic">перемотка назад</set> (⏪)
+    </template>
+</category>
 <!-- вопросы про перемотка назад -->	
 <category>
     <pattern>кнопка перемотка назад</pattern>
