@@ -10,7 +10,7 @@ namespace MyNeuralNetwork
     internal class Settings
     {
         public static int SIZE = 100;
-        public static int classes = 6;
+        public static int classes = 7;
         public string pathToDataset = @"..\..\dataset";
         private int _border = 20;
         public int border
@@ -208,8 +208,8 @@ namespace MyNeuralNetwork
 
             AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
             bc.FilterBlobs = true;
-            //bc.MinWidth = 3;
-            //bc.MinHeight = 3;
+            bc.MinWidth = 15;
+            bc.MinHeight = 3;
             // Упорядочиваем по размеру
             bc.ObjectsOrder = AForge.Imaging.ObjectsOrder.Size;
             // Обрабатываем картинку
@@ -217,6 +217,7 @@ namespace MyNeuralNetwork
 
             Rectangle[] rects = bc.GetObjectsRectangles();
             AForge.Imaging.Blob[] blobs = bc.GetObjectsInformation();
+            Console.WriteLine(blobs.Length);
             if (blobs.Length > 0)
             {
                 var BiggestBlob = blobs[0];
@@ -338,8 +339,8 @@ namespace MyNeuralNetwork
         {
             var inputs = new double[Settings.SIZE * 2]; 
             var um = AForge.Imaging.UnmanagedImage.FromManagedImage(Get(img));
-            //img.Save($"F:\\my_programs\\aa_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            //Get(img).Save($"F:\\my_programs\\bb_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            img.Save($"F:\\my_programs\\aa_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            Get(img).Save($"F:\\my_programs\\bb_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             var cols = GetBitmapColumn(um);
             var rows = GetBitmapRow(um);
             for (int i = 0; i < Settings.SIZE; i++)

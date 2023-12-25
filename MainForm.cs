@@ -132,7 +132,7 @@ namespace MyNeuralNetwork
         public MainForm(Dictionary<string, Func<int[], BaseNetwork>> networksFabric)
         {
             InitializeComponent();
-            netStructureBox.Text = $"{Settings.SIZE*2};{Settings.SIZE * 4};20;{Settings.classes}";
+            netStructureBox.Text = $"{Settings.SIZE*2};{Settings.SIZE * 6};100;{Settings.classes}";
 
 
             // Список камер получаем
