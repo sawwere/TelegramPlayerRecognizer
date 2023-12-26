@@ -1405,6 +1405,12 @@
         </template>
     </category>
 
+<category>
+        <pattern>ЧТО ТАКОЕ ПЛЕЕР</pattern>
+        <template>
+            <srai>РАССКАЖИ О ПЛЕЕРАХ</srai>
+        </template>
+    </category>
 
 <category>
         <pattern>* О ПЛЕЕРАХ</pattern>
@@ -1681,6 +1687,28 @@
 Я могу рассказать о каждой кнопке подробнее, только укажите конкретную кнопку
 </li>
             </random>
+        </template>
+</category>
+
+<category><pattern>* делает плеер</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+<category><pattern>* сособен плеер</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+
+<category><pattern>* делает * плеер</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
+        </template>
+</category>
+<category><pattern>* сособен * плеер</pattern>
+        <template>
+		<srai>КАКИЕ ФУНКЦИИ ЕСТЬ У ПЛЕЕРА</srai>
         </template>
 </category>
 
