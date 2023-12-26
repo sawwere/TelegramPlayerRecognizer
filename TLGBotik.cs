@@ -46,6 +46,12 @@ namespace MyNeuralNetwork
         {
             await botik.SendStickerAsync(chatId, InputFile.FromFileId(stickerId));
         }
+        private async Task SendPhoto(long chatId, string a)
+        {
+            Message message = await botik.SendPhotoAsync(
+                chatId: chatId,
+                photo: InputFile.FromUri(a));
+        }
 
         private async Task AnswerText(long chatId, string username, string text)
         {
@@ -111,6 +117,85 @@ namespace MyNeuralNetwork
                         await SendSticker(chatId, "CAACAgQAAxkBAAELBvxlh2_DO5dZXGRCOFNsE0nPs__paAAChQ0AAls0aVEGmGV9TXEyjTME");
                         break;
 
+                    case "PHOTO1":
+                        await SendPhoto(chatId, "https://upload.wikimedia.org/wikipedia/commons/6/65/MPlayer.png");
+                        break;
+                    case "PHOTO2":
+                        await SendPhoto(chatId, "http://ae01.alicdn.com/kf/HTB1K3CUNFXXXXckXFXXq6xXFXXXP/228120074/HTB1K3CUNFXXXXckXFXXq6xXFXXXP.jpg");
+                        break;
+                    case "PHOTO3":
+                        await SendPhoto(chatId, "https://images.philips.com/is/image/PhilipsConsumer/SA3CNT16K_37-RTP-global-001?$jpglarge$&wid=1250");
+                        break;
+                    case "PHOTO4":
+                        await SendPhoto(chatId, "https://nowatermark.ozone.ru/s3/multimedia-o/6040580196.jpg");
+                        break;
+                    case "PHOTO5":
+                        await SendPhoto(chatId, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sony_D50_Discman_Open.JPG/1200px-Sony_D50_Discman_Open.JPG");
+                        break;
+                    case "PHOTO6":
+                        await SendPhoto(chatId, "https://cdn.mos.cms.futurecdn.net/1ae99ad7093f8e3003b5dc17f0bab394-1200-80.jpg");
+                        break;
+                    case "PHOTO7":
+                        await SendPhoto(chatId, "https://ae01.alicdn.com/kf/HTB1MdasXrr1gK0jSZFDq6z9yVXaC.jpg");
+                        break;
+                    case "PHOTO8":
+                        await SendPhoto(chatId, "https://static2.nordic.pictures/3329610-thickbox_default/apple-ipod-shuffle-space-gray-6-generation-2gb.jpg");
+                        break;
+                    case "PHOTO9":
+                        await SendPhoto(chatId, "https://maiso.ru/files/user/312707/board/texet-t-795-garantija-god.jpg");
+                        break;
+                    case "PHOTO10":
+                        await SendPhoto(chatId, "https://img.audiomania.ru/images/content/mp3-aac-wav-flac-all-the-audio-file-formats-explained.jpg");
+                        break;
+                    case "PHOTO11":
+                        await SendPhoto(chatId, "https://u.9111s.ru/uploads/202009/30/cf645a085a8b53dfb3cbb711ff1a8e0a.jpg");
+                        break;
+                    case "PHOTO12":
+                        await SendPhoto(chatId, "https://a.d-cd.net/mHVydkAZvg2dH3-468st-wUs1aI-960.jpg");
+                        break;
+                    case "PHOTO13":
+                        await SendPhoto(chatId, "https://wp-s.ru/wallpapers/15/0/314378068711966/devushka-otdyxayushhaya-na-trave-i-slushayushhaya-muzyku.jpg");
+                        break;
+                    case "PHOTO14":
+                        await SendPhoto(chatId, "https://cdn.mos.cms.futurecdn.net/437db76d1a17ed462864495ca03ba635.jpg");
+                        break;
+                    case "PHOTO15":
+                        await SendPhoto(chatId, "https://i.pinimg.com/originals/d3/3a/e2/d33ae2d07a7d1ad4be3b0adc462b9fd9.jpg");
+                        break;
+                    case "PHOTO16":
+                        await SendPhoto(chatId, "https://www.nippon.com/ja/ncommon/contents/japan-topics/139393/139393.jpg");
+                        break;
+                    case "PHOTO17":
+                        await SendPhoto(chatId, "https://www.hi-fi.ru/upload/medialibrary/f17/f17878229c58fc32be5bc7ba4fa1057c.jpg");
+                        break;
+                    case "PHOTO18":
+                        await SendPhoto(chatId, "https://hifi-wiki.com/images/7/7b/Sony_D-50-1984.jpg");
+                        break;
+                    case "PHOTO19":
+                        await SendPhoto(chatId, "https://www.zdnet.com/a/img/2017/05/25/7150efe6-27c6-4302-90cc-aa8c51826cfc/mighty-audio-spotify-streaming-mp3.jpg");
+                        break;
+                    case "PHOTO20":
+                        await SendPhoto(chatId, "https://blog.barnsly.ru/wp-content/uploads/2017/10/CA_DacMagic_XS2_inside_1_1200.jpg");
+                        break;
+                    case "PHOTO21":
+                        await SendPhoto(chatId, "https://img.myipadbox.com/sec/product_l/EDA0017953.jpg");
+                        break;
+                    case "PHOTO22":
+                        await SendPhoto(chatId, "https://www.hifinext.com/wp-content/uploads/2021/10/Sony_CDP-101-Prospekt-1.jpg");
+                        break;
+                    case "PHOTO23":
+                        await SendPhoto(chatId, "https://i.pinimg.com/736x/94/ac/2f/94ac2fe1308445d7a0cba7fc04bcced2--cool-inventions-andreas.jpg");
+                        break;
+                    case "PHOTO24":
+                        await SendPhoto(chatId, "https://remont.zakazdj.ru/wp-content/uploads/2018/10/debjut2_4.jpg");
+                        break;
+                    case "PHOTO25":
+                        await SendPhoto(chatId, "https://www.minidisc.org/images/sony_mzg750_huge.jpg");
+                        break;
+                    case "PHOTO26":
+                        await SendPhoto(chatId, "https://img.audiomania.ru/images/content/mp4-aac-wav-flac-all-the-audio-file-formats-explained.jpg");
+                        break;
+                        
                 }
                 await botik.SendTextMessageAsync(chatId, splitted[2]);
             }
