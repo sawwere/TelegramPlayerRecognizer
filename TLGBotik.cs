@@ -236,8 +236,8 @@ namespace MyNeuralNetwork
                 AForge.Imaging.Filters.ResizeBilinear scaleFilter = new AForge.Imaging.Filters.ResizeBilinear(500, 500);
                 var uProcessed = scaleFilter.Apply(AForge.Imaging.UnmanagedImage.FromManagedImage(bm));
                 bm = uProcessed.ToManagedImage();
-                proc.ProcessImage(bm);
-                Sample fig = proc.CreateProcessedSample();
+                //proc.ProcessImage(bm);
+                Sample fig = proc.CreateSample(new Bitmap(img));
                 switch (perseptron.Predict(fig))
                 {
                     case FigureType.Break: await AnswerText(chatId, username, "Загадываю Стоп"); break;

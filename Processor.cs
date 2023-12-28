@@ -10,7 +10,7 @@ namespace MyNeuralNetwork
     internal class Settings
     {
         public static int SIZE = 100;
-        public static int classes = 7;
+        public static int classes = 6;
         public string pathToDataset = @"..\..\dataset";
         private int _border = 20;
         public int border
@@ -95,8 +95,8 @@ namespace MyNeuralNetwork
             // На вход поступает необработанное изображение с веб-камеры
 
             //  Минимальная сторона изображения (обычно это высота)
-            if (bitmap.Height > bitmap.Width)
-                throw new Exception("К такой забавной камере меня жизнь не готовила!");
+            //if (bitmap.Height > bitmap.Width)
+            //    throw new Exception("К такой забавной камере меня жизнь не готовила!");
             //  Можно было, конечено, и не кидаться эксепшенами в истерике, но идите и купите себе нормальную камеру!
             int side = bitmap.Height;
 
@@ -171,8 +171,8 @@ namespace MyNeuralNetwork
             // На вход поступает необработанное изображение с веб-камеры
 
             //  Минимальная сторона изображения (обычно это высота)
-            if (bitmap.Height > bitmap.Width)
-                throw new Exception("К такой забавной камере меня жизнь не готовила!");
+            //if (bitmap.Height > bitmap.Width)
+            //    throw new Exception("К такой забавной камере меня жизнь не готовила!");
             //  Можно было, конечено, и не кидаться эксепшенами в истерике, но идите и купите себе нормальную камеру!
             int side = bitmap.Height;
 
@@ -339,8 +339,8 @@ namespace MyNeuralNetwork
         {
             var inputs = new double[Settings.SIZE * 2]; 
             var um = AForge.Imaging.UnmanagedImage.FromManagedImage(Get(img));
-            img.Save($"F:\\my_programs\\aa_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            Get(img).Save($"F:\\my_programs\\bb_{cnt}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+           img.Save($"..//..//papka//a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+           Get(img).Save($"..//..//papka//b.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             var cols = GetBitmapColumn(um);
             var rows = GetBitmapRow(um);
             for (int i = 0; i < Settings.SIZE; i++)
@@ -356,6 +356,8 @@ namespace MyNeuralNetwork
         {
             var inputs = new double[Settings.SIZE * 2];
             var um = AForge.Imaging.UnmanagedImage.FromManagedImage(processed);
+            processed.Save($"..//..//papka//a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            Get(processed).Save($"..//..//papka//b.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             var cols = GetBitmapColumn(um);
             var rows = GetBitmapRow(um);
             for (int i = 0; i < Settings.SIZE; i++)
